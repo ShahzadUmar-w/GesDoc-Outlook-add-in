@@ -6,6 +6,7 @@ import {
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SettingsIcon from '@mui/icons-material/Settings'; // Main icon for settings screen
 import SaveIcon from '@mui/icons-material/Save'; // Icon for save button
+import { useNavigate } from 'react-router-dom';
 
 // import { LOCAL_STORAGE_KEYS } from '../utils/constants'; // Ensure correct path for constants
 
@@ -18,44 +19,7 @@ const SettingScreen = () => {
     const [currentServername, setCurrentServername] = useState('');
     const [isSaving, setIsSaving] = useState(false);
 
-    // Load values from localStorage on component mount
-    // useEffect(() => {
-    //     setCurrentUsername(localStorage.getItem(LOCAL_STORAGE_KEYS.USERNAME) || '');
-    //     setCurrentServername(localStorage.getItem(LOCAL_STORAGE_KEYS.SERVERNAME) || '');
-    // }, []); // Empty dependency array means this runs only once on mount
-
-    // const handleSaveSettings = () => {
-    //     setIsSaving(true);
-    //     try {
-            // Update localStorage directly
-            // localStorage.setItem(LOCAL_STORAGE_KEYS.USERNAME, currentUsername);
-            // localStorage.setItem(LOCAL_STORAGE_KEYS.SERVERNAME, currentServername);
-
-            // Notify parent (App.js) about successful save
-    //         if (showSnackbar) { // Use showSnackbar prop to show global feedback
-    //             showSnackbar("Settings saved successfully!", "success");
-    //         } else {
-    //             console.log("Settings saved (no global snackbar available).");
-    //         }
-
-    //         // Tell parent to go back (using onBack prop)
-    //         if (onBack) {
-    //             onBack(); // This will trigger App.js to change activeScreen and refresh its own settings state
-    //         } else {
-    //             console.log("Settings saved, but 'onBack' callback not provided.");
-    //             // If onBack isn't provided, this button does nothing after saving to localStorage.
-    //             // It is critical for screen-based navigation to have this callback.
-    //         }
-    //     } catch (error) {
-    //         console.error("Failed to save settings to local storage:", error);
-    //         if (showSnackbar) {
-    //             showSnackbar("Failed to save settings. Please try again.", "error");
-    //         }
-    //     } finally {
-    //         setIsSaving(false);
-    //     }
-    // };
-
+ const navigate=useNavigate()
     return (
         <Box
             sx={{
@@ -75,7 +39,9 @@ const SettingScreen = () => {
            
                 <IconButton
                     sx={{ position: 'absolute', top: 8, left: 8, color: theme.palette.text.secondary, zIndex: 1 }}
-                    // onClick={onBack}
+                    onClick={()=>{
+                        navigate('/main')
+                    }}
                     aria-label="back"
                     disabled={isSaving} // Disable back during save
                 >

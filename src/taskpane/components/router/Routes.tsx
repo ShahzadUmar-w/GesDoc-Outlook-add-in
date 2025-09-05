@@ -8,6 +8,7 @@ import Getstart from "../layout/Main/Getstart";
 import MainScreen from "../layout/Main/MainScreen";
 import RegisterEmailScreen from "../layout/Main/RegisterEmailScreen";
 import Setting from "../layout/Main/Setting";
+import RegesterEmialAndAttachments from "../layout/Main/RegesterEmialAndAttachments";
 
 
 const RouterApp: React.FC = () => {
@@ -20,6 +21,8 @@ const RouterApp: React.FC = () => {
                     <Route path="/" element={<Getstart />} />
                     <Route path="/main" element={<MainScreen/>} />
                     <Route path="/RegisterEmailScreen" element={<RegisterEmailScreen/>} />
+                    <Route path="/RegesterEmialAndAttachments" element={<RegesterEmialAndAttachments/>} />
+
                     <Route path="/setting" element={<Setting/>} />
 
                 </Routes>

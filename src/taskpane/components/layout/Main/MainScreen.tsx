@@ -109,7 +109,7 @@ const MainScreen = () => {
           fullWidth
           startIcon={<AttachFileIcon />}
           endIcon={<ArrowForwardIcon />}
-          onClick={() => navigateWithLoader('/main')}
+          onClick={() => navigateWithLoader('/RegesterEmialAndAttachments')}
           sx={{
             backgroundColor:'#e56100',
             py: 1.5,
