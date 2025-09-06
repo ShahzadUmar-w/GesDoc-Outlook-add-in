@@ -350,6 +350,7 @@ const InvoiceFile = () => {
               py: 1.5,
               justifyContent: 'space-between',
               px: 3,
+              my: 1
             }}
           >
             Registar Fatura
