@@ -290,12 +290,12 @@ const InvoiceFile = () => {
       {/* Browser Page Title Bar */}
 
       {/* Title */}
-      <Typography variant="h6" gutterBottom sx={{ mb: 2, fontWeight: 600 }}>
-        Registar Invoice
+      <Typography style={{ textAlign: 'center' }} variant="h6" gutterBottom sx={{ mb: 2, fontWeight: 400 }}>
+        Register Invoice
       </Typography>
 
       {/* Description */}
-      <Typography variant="body1" color="text.secondary" sx={{ mb: 3, maxWidth: 300 }}>
+      <Typography style={{ textAlign: 'center' }} variant="body1" color="text.secondary" sx={{ mb: 3, maxWidth: 300 }}>
         Select invoice and register it to your DMS.
       </Typography>
 
