@@ -278,7 +278,7 @@ const InvoiceFile = () => {
       </IconButton>
 
       {/* Icon */}
-      <Box component="img" src={require('../../../../../assets/logo-filled.png')} sx={{ width: 150, display: 'block', margin: 'auto' }}>
+      <Box component="img" src={require('../../../../../assets/logo-filled.png')} sx={{ top: 10, width: 150, display: 'block', margin: 'auto' }}>
 
       </Box>
       {/* <img
@@ -350,7 +350,7 @@ const InvoiceFile = () => {
               py: 1.5,
               justifyContent: 'space-between',
               px: 3,
-              my: 1
+              my: 2
             }}
           >
             Registar Fatura
