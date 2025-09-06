@@ -4,11 +4,12 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import Getstart from "../layout/Main/Getstart";
+import Getstart from "../layout/GetStart/Getstart";
 import MainScreen from "../layout/Main/MainScreen";
-import RegisterEmailScreen from "../layout/Main/RegisterEmailScreen";
-import Setting from "../layout/Main/Setting";
-import RegesterEmialAndAttachments from "../layout/Main/RegesterEmialAndAttachments";
+import RegisterEmailScreen from "../layout/Regesterpages/RegisterEmailScreen";
+import Setting from "../layout/Settings/Setting";
+import RegesterEmialAndAttachments from "../layout/Regesterpages/RegesterEmialAndAttachments";
+import InvoiceFile from "../layout/Regesterpages/InvoiceFile";
 
 
 const RouterApp: React.FC = () => {
@@ -22,6 +23,7 @@ const RouterApp: React.FC = () => {
                     <Route path="/main" element={<MainScreen/>} />
                     <Route path="/RegisterEmailScreen" element={<RegisterEmailScreen/>} />
                     <Route path="/RegesterEmialAndAttachments" element={<RegesterEmialAndAttachments/>} />
+                    <Route path="/invoice" element={<InvoiceFile/>} />
 
                     <Route path="/setting" element={<Setting/>} />
 

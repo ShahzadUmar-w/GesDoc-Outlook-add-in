@@ -128,7 +128,7 @@ const MainScreen = () => {
           fullWidth
           startIcon={<ReceiptLongIcon />}
           endIcon={<ArrowForwardIcon />}
-          onClick={() => navigateWithLoader('/main')}
+          onClick={() => navigateWithLoader('/invoice')}
           sx={{
             py: 1.5,
             justifyContent: 'space-between',
