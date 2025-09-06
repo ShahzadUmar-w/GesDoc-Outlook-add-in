@@ -295,7 +295,7 @@ const InvoiceFile = () => {
       </Typography>
 
       {/* Description */}
-      <Typography style={{ textAlign: 'center' }} variant="body1" color="text.secondary" sx={{ mb: 3, maxWidth: 300 }}>
+      <Typography style={{ textAlign: 'center' }} variant="body1" color="text.secondary" sx={{ mb: 3, maxWidth: 350 }}>
         Select invoice and register it to your DMS.
       </Typography>
 
@@ -323,7 +323,7 @@ const InvoiceFile = () => {
 
 
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Attachment</InputLabel>
+            <InputLabel id="demo-simple-select-label">Invoice</InputLabel>
             {mailAttachments.length && (<>
 
               <Select
