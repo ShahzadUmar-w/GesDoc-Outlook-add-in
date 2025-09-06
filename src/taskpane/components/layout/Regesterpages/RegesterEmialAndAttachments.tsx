@@ -2,6 +2,7 @@ import { Button, IconButton, Input } from '@mui/material';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -280,6 +281,10 @@ const RegesterEmialAndAttachments = () => {
         <ArrowBackIcon />
       </IconButton>
 
+      {/* Icon */}
+      <Box component="img" src={require('../../../../../assets/logo-filled.png')} sx={{ top: 10, width: 150, display: 'block', margin: 'auto' }}>
+
+      </Box>
       {/* Main Content Area */}
       <div style={styles.contentArea}>
         {/* Email Input Field */}
@@ -302,6 +307,7 @@ const RegesterEmialAndAttachments = () => {
           {mailAttachments.length > 0 ? (
             mailAttachments.map((att) => (
               <label key={att.id} style={styles.attachmentLabel}>
+
                 <input
                   type="checkbox"
                   name={att.id}
