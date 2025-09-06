@@ -4,6 +4,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const RegesterEmialAndAttachments = () => {
   // State for the email input field, will be populated by Office JS
@@ -12,6 +13,8 @@ const RegesterEmialAndAttachments = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Hook for navigation bw different components
+  const navigate = useNavigate()
   // --- Office JS Integration ---
   useEffect(() => {
     // This function will initialize Office and fetch data
