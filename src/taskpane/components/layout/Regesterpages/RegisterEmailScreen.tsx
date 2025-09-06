@@ -12,19 +12,19 @@ const RegisterEmailScreen = () => {
     const theme = useTheme();
     const [comment, setComment] = useState('');
     const [emailSubject, setemailSubject] = useState('');
-        const [emailSender, setemailSender] = useState('');
-            const [hasSettings, sethasSettings] = useState(null);
-            const [isLoading, setisLoading] = useState(null);
+    const [emailSender, setemailSender] = useState('');
+    const [hasSettings, sethasSettings] = useState(null);
+    const [isLoading, setisLoading] = useState(null);
 
-const navigate=useNavigate()
+    const navigate = useNavigate()
 
 
-useEffect(()=>{
-setemailSubject(Office.context.mailbox.item.subject)
-setemailSender(Office.context.mailbox.item.sender.emailAddress)
-let Settings=localStorage.getItem('user_data')
-sethasSettings(Settings)
-},[])
+    useEffect(() => {
+        setemailSubject(Office.context.mailbox.item.subject)
+        setemailSender(Office.context.mailbox.item.sender.emailAddress)
+        let Settings = localStorage.getItem('user_data')
+        sethasSettings(Settings)
+    }, [])
 
 
     const handleSaveClick = () => {
@@ -48,8 +48,8 @@ sethasSettings(Settings)
             {/* Back Button */}
             <IconButton
                 sx={{ position: 'absolute', top: 8, left: 8, color: theme.palette.text.secondary, zIndex: 1 }}
-                onClick={()=>{
-navigate('/main')
+                onClick={() => {
+                    navigate('/main')
                 }}
                 aria-label="back"
             >
@@ -57,11 +57,11 @@ navigate('/main')
             </IconButton>
 
             {/* Icon */}
-           <img
-          src={require('../../../../../assets/logo-filled.png')}
-          width={150}
-          alt="Logo"
-        />
+            <img
+                src={require('../../../../../assets/logo-filled.png')}
+                width={150}
+                alt="Logo"
+            />
             {/* Title */}
             <Typography variant="h6" gutterBottom sx={{ mb: 2, fontWeight: theme.typography.h6.fontWeight }}>
                 Registar Email
@@ -111,9 +111,9 @@ navigate('/main')
             {/* Settings Warning */}
             {!hasSettings && (
                 <Alert severity="warning" sx={{ mb: 3, width: '100%', maxWidth: 380 }}>
-                    Please configure Username and Server Name in settings before proceeding. <br/>
-                     <Link to={'/setting'}>
-Lets configure
+                    Please configure Username and Server Name in settings before proceeding. <br />
+                    <Link to={'/setting'}>
+                        Lets configure
                     </Link>
                 </Alert>
             )}
@@ -123,7 +123,7 @@ Lets configure
                 variant="contained"
                 color="primary"
                 onClick={handleSaveClick}
-                disabled={isLoading }
+                disabled={isLoading}
                 endIcon={isLoading ? <CircularProgress size={20} color="inherit" /> : <SendIcon />}
                 size="large"
                 fullWidth

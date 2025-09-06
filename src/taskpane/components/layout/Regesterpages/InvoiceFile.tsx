@@ -1,4 +1,4 @@
-import { Button, FormControl, IconButton, Input, InputLabel, MenuItem, Select } from '@mui/material';
+import { Button, FormControl, IconButton, Input, InputLabel, MenuItem, Select, Box } from '@mui/material';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -277,6 +277,16 @@ const InvoiceFile = () => {
         <ArrowBackIcon />
       </IconButton>
 
+      {/* Icon */}
+      <Box component="img" src={require('../../../../../assets/logo-filled.png')} sx={{ width: 150, display: 'block', margin: 'auto' }}>
+
+      </Box>
+      {/* <img
+        src={require('../../../../../assets/logo-filled.png')}
+        width={150}
+        alt="Logo"
+        sx={{ widh: 200, margin: 'auto' }}
+      /> */}
       {/* Browser Page Title Bar */}
 
 
