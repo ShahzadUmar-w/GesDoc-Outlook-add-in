@@ -1,4 +1,4 @@
-import { Button, FormControl, IconButton, Input, InputLabel, MenuItem, Select, Box } from '@mui/material';
+import { Button, FormControl, IconButton, Input, InputLabel, MenuItem, Select, Box, Typography } from '@mui/material';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -289,6 +289,15 @@ const InvoiceFile = () => {
       /> */}
       {/* Browser Page Title Bar */}
 
+      {/* Title */}
+      <Typography variant="h6" gutterBottom sx={{ mb: 2, fontWeight: 600 }}>
+        Registar Invoice
+      </Typography>
+
+      {/* Description */}
+      <Typography variant="body1" color="text.secondary" sx={{ mb: 3, maxWidth: 300 }}>
+        Select invoice and register it to your DMS.
+      </Typography>
 
 
       {/* Main Content Area */}
