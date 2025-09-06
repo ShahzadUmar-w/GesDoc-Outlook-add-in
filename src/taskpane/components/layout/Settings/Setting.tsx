@@ -19,7 +19,7 @@ const SettingScreen = () => {
     const [currentServername, setCurrentServername] = useState('');
     const [isSaving, setIsSaving] = useState(false);
 
- const navigate=useNavigate()
+    const navigate = useNavigate()
     return (
         <Box
             sx={{
@@ -36,18 +36,18 @@ const SettingScreen = () => {
         >
             {/* Back Button */}
             {/* Only show back button if onBack callback is provided by parent */}
-           
-                <IconButton
-                    sx={{ position: 'absolute', top: 8, left: 8, color: theme.palette.text.secondary, zIndex: 1 }}
-                    onClick={()=>{
-                        navigate('/main')
-                    }}
-                    aria-label="back"
-                    disabled={isSaving} // Disable back during save
-                >
-                    <ArrowBackIcon />
-                </IconButton>
-           
+
+            <IconButton
+                sx={{ position: 'absolute', top: 8, left: 8, color: theme.palette.text.secondary, zIndex: 1 }}
+                onClick={() => {
+                    navigate('/main')
+                }}
+                aria-label="back"
+                disabled={isSaving} // Disable back during save
+            >
+                <ArrowBackIcon />
+            </IconButton>
+
 
             {/* Icon */}
             <SettingsIcon sx={{ fontSize: 80, color: theme.palette.primary.light, mb: 3 }} />
