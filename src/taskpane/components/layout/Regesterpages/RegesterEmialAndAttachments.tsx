@@ -1,4 +1,4 @@
-import { Button, Input } from '@mui/material';
+import { Button, IconButton, Input } from '@mui/material';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import React, { useState, useEffect } from 'react';
@@ -95,9 +95,9 @@ const RegesterEmialAndAttachments = () => {
       fontFamily: 'Arial, sans-serif',
       fontSize: '14px',
       color: '#333',
-    //   border: '1px solid #bbb',
+      //   border: '1px solid #bbb',
       borderRadius: '5px',
-    //   width: '400px', // Approximate width to match the image
+      //   width: '400px', // Approximate width to match the image
       margin: '20px auto',
       backgroundColor: '#fff',
       boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
@@ -169,12 +169,12 @@ const RegesterEmialAndAttachments = () => {
       marginBottom: '25px',
     },
     emailInputField: {
-    //   width: '100%',
-    //   padding: '8px 10px',
-    // //   border: '1px solid #ccc',
-    //   borderRadius: '3px',
-    //   fontSize: '14px',
-    //   boxSizing: 'border-box',
+      //   width: '100%',
+      //   padding: '8px 10px',
+      // //   border: '1px solid #ccc',
+      //   borderRadius: '3px',
+      //   fontSize: '14px',
+      //   boxSizing: 'border-box',
     },
     // Attachments section
     attachmentsSection: {
@@ -183,11 +183,11 @@ const RegesterEmialAndAttachments = () => {
     },
     attachmentLabel: {
       display: "block",
-    marginBottom: "10px",
-    cursor: "pointer",
-    boxShadow: "0px 0px 3px 1px #00000030",
-    border: '2px red',
-    padding: "16px",
+      marginBottom: "10px",
+      cursor: "pointer",
+      boxShadow: "0px 0px 3px 1px #00000030",
+      border: '2px red',
+      padding: "16px",
 
     },
     attachmentCheckbox: {
@@ -262,8 +262,18 @@ const RegesterEmialAndAttachments = () => {
   return (
     <div style={styles.container}>
       {/* Browser Page Title Bar */}
-    
-     
+
+
+      {/* Back Button */}
+      <IconButton
+        sx={{ position: 'absolute', top: 8, left: 8, color: '#666', zIndex: 1 }}
+        onClick={() => {
+          navigate('/main')
+        }}
+        aria-label="back"
+      >
+        <ArrowBackIcon />
+      </IconButton>
 
       {/* Main Content Area */}
       <div style={styles.contentArea}>
@@ -274,12 +284,12 @@ const RegesterEmialAndAttachments = () => {
             placeholder="Your email (text)"
             value={emailInput}
             fullWidth
-            
+
             onChange={(e) => setEmailInput(e.target.value)}
             // style={styles.emailInputField as React.CSSProperties}
             readOnly // Make it read-only as it's pre-filled by the add-in
           />
-          
+
         </div>
 
         {/* Attachments Checkboxes */}
@@ -305,22 +315,22 @@ const RegesterEmialAndAttachments = () => {
         {/* Register Button */}
         <div style={styles.actionButtonContainer as React.CSSProperties}>
           <Button
-          variant="contained"
-          color="secondary"
-          size="large"
-          fullWidth
-          startIcon={<AttachFileIcon />}
-          endIcon={<ArrowForwardIcon />}
-        //   onClick={() => navigateWithLoader('/RegesterEmialAndAttachments')}
-          sx={{
-            backgroundColor:'#e56100',
-            py: 1.5,
-            justifyContent: 'space-between',
-            px: 3,
-          }}
-        >
-          Registar Email e Anexos
-        </Button>
+            variant="contained"
+            color="secondary"
+            size="large"
+            fullWidth
+            startIcon={<AttachFileIcon />}
+            endIcon={<ArrowForwardIcon />}
+            //   onClick={() => navigateWithLoader('/RegesterEmialAndAttachments')}
+            sx={{
+              backgroundColor: '#e56100',
+              py: 1.5,
+              justifyContent: 'space-between',
+              px: 3,
+            }}
+          >
+            Registar Email e Anexos
+          </Button>
 
         </div>
 
