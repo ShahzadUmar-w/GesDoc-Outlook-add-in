@@ -1,8 +1,11 @@
-import { Button, FormControl, Input, InputLabel, MenuItem, Select } from '@mui/material';
+import { Button, FormControl, IconButton, Input, InputLabel, MenuItem, Select } from '@mui/material';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 import React, { useState, useEffect } from 'react';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
+import { useNavigate } from 'react-router-dom';
 const InvoiceFile = () => {
   // State for the email input field, will be populated by Office JS
   const [emailInput, setEmailInput] = useState('');
@@ -10,6 +13,8 @@ const InvoiceFile = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // --- navigation
+  const navigate = useNavigate()
   // --- Office JS Integration ---
   useEffect(() => {
     // This function will initialize Office and fetch data
@@ -43,13 +48,13 @@ const InvoiceFile = () => {
         } else {
           // Fallback for when not running in an Office Add-in environment
           console.log("Office context not available. Using mock data.");
-        //   setEmailInput("mock_sender@example.com");
-        //   setMailAttachments([
-        //     { id: "mock_att1", name: "Mock Document.pdf", isChecked: false },
-        //     { id: "mock_att2", name: "Mock Image.jpg", isChecked: true }, // Pre-checked as per wireframe
-        //     { id: "mock_att3", name: "Mock Spreadsheet.xlsx", isChecked: false },
-        //     { id: "mock_att4", name: "Mock Presentation.pptx", isChecked: false },
-        //   ]);
+          //   setEmailInput("mock_sender@example.com");
+          //   setMailAttachments([
+          //     { id: "mock_att1", name: "Mock Document.pdf", isChecked: false },
+          //     { id: "mock_att2", name: "Mock Image.jpg", isChecked: true }, // Pre-checked as per wireframe
+          //     { id: "mock_att3", name: "Mock Spreadsheet.xlsx", isChecked: false },
+          //     { id: "mock_att4", name: "Mock Presentation.pptx", isChecked: false },
+          //   ]);
         }
       } catch (err) {
         console.error("Error initializing Office or fetching data:", err);
@@ -95,9 +100,9 @@ const InvoiceFile = () => {
       fontFamily: 'Arial, sans-serif',
       fontSize: '14px',
       color: '#333',
-    //   border: '1px solid #bbb',
+      //   border: '1px solid #bbb',
       borderRadius: '5px',
-    //   width: '400px', // Approximate width to match the image
+      //   width: '400px', // Approximate width to match the image
       margin: '20px auto',
       backgroundColor: '#fff',
       boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
@@ -169,12 +174,12 @@ const InvoiceFile = () => {
       marginBottom: '25px',
     },
     emailInputField: {
-    //   width: '100%',
-    //   padding: '8px 10px',
-    // //   border: '1px solid #ccc',
-    //   borderRadius: '3px',
-    //   fontSize: '14px',
-    //   boxSizing: 'border-box',
+      //   width: '100%',
+      //   padding: '8px 10px',
+      // //   border: '1px solid #ccc',
+      //   borderRadius: '3px',
+      //   fontSize: '14px',
+      //   boxSizing: 'border-box',
     },
     // Attachments section
     attachmentsSection: {
@@ -183,11 +188,11 @@ const InvoiceFile = () => {
     },
     attachmentLabel: {
       display: "block",
-    marginBottom: "10px",
-    cursor: "pointer",
-    boxShadow: "0px 0px 3px 1px #00000030",
-    border: '2px red',
-    padding: "16px",
+      marginBottom: "10px",
+      cursor: "pointer",
+      boxShadow: "0px 0px 3px 1px #00000030",
+      border: '2px red',
+      padding: "16px",
 
     },
     attachmentCheckbox: {
@@ -261,9 +266,20 @@ const InvoiceFile = () => {
 
   return (
     <div style={styles.container}>
+      {/* Back Button */}
+      <IconButton
+        sx={{ position: 'absolute', top: 8, left: 8, color: '#666', zIndex: 1 }}
+        onClick={() => {
+          navigate('/main')
+        }}
+        aria-label="back"
+      >
+        <ArrowBackIcon />
+      </IconButton>
+
       {/* Browser Page Title Bar */}
-    
-     
+
+
 
       {/* Main Content Area */}
       <div style={styles.contentArea}>
@@ -274,12 +290,12 @@ const InvoiceFile = () => {
             placeholder="Your email (text)"
             value={emailInput}
             fullWidth
-            
+
             onChange={(e) => setEmailInput(e.target.value)}
             // style={styles.emailInputField as React.CSSProperties}
             readOnly // Make it read-only as it's pre-filled by the add-in
           />
-          
+
         </div>
 
         {/* Attachments Checkboxes */}
@@ -287,47 +303,47 @@ const InvoiceFile = () => {
 
 
 
-<FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label">Attachment</InputLabel>
-  {mailAttachments.length && (<>
-  
-   <Select
-    labelId="demo-simple-select-label"
-    id="demo-simple-select"
-    // value={age}
-    label="Age"
-    // onChange={handleChange}
-  >
-   {mailAttachments.map((att)=>(
-    <MenuItem value={att}>{att.name}</MenuItem>
-   ))}
-  </Select>
-  </>)
- 
-  }
-</FormControl>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Attachment</InputLabel>
+            {mailAttachments.length && (<>
 
-         
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                // value={age}
+                label="Age"
+              // onChange={handleChange}
+              >
+                {mailAttachments.map((att) => (
+                  <MenuItem value={att}>{att.name}</MenuItem>
+                ))}
+              </Select>
+            </>)
+
+            }
+          </FormControl>
+
+
         </div>
 
         {/* Register Button */}
         <div style={styles.actionButtonContainer as React.CSSProperties}>
-           <Button
-          variant="contained"
-          color="success"
-          size="large"
-          fullWidth
-          startIcon={<ReceiptLongIcon />}
-          endIcon={<ArrowForwardIcon />}
-        //   onClick={() => navigateWithLoader('/invoice')}
-          sx={{
-            py: 1.5,
-            justifyContent: 'space-between',
-            px: 3,
-          }}
-        >
-          Registar Fatura
-        </Button>
+          <Button
+            variant="contained"
+            color="success"
+            size="large"
+            fullWidth
+            startIcon={<ReceiptLongIcon />}
+            endIcon={<ArrowForwardIcon />}
+            //   onClick={() => navigateWithLoader('/invoice')}
+            sx={{
+              py: 1.5,
+              justifyContent: 'space-between',
+              px: 3,
+            }}
+          >
+            Registar Fatura
+          </Button>
         </div>
 
         {/* Description and Filename Examples */}
