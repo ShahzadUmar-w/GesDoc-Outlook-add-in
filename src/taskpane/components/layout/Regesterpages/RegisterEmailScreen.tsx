@@ -16,6 +16,7 @@ const RegisterEmailScreen = () => {
     const [hasSettings, sethasSettings] = useState(null);
     const [isLoading, setisLoading] = useState(null);
 
+    // React Hook for navigation
     const navigate = useNavigate()
 
 
