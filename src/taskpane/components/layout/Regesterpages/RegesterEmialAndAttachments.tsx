@@ -304,7 +304,40 @@ const RegesterEmialAndAttachments = () => {
 
 
 
-        <div style={styles.attachmentsSection as React.CSSProperties}>
+        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+
+          {mailAttachments.length > 0 ? (
+            mailAttachments.map((att) => (
+              <ListItem
+                key={att.id}
+                secondaryAction={
+                  <IconButton edge="end" aria-label="comments">
+                    <CommentIcon />
+                  </IconButton>
+                }
+                disablePadding
+              >
+                <ListItemButton role={undefined} dense>
+                  <ListItemIcon>
+                    <Checkbox
+                      edge="start"
+                      // checked={checked.includes(value)}
+                      tabIndex={-1}
+                      disableRipple
+                      inputProps={{ 'aria-labelledby': att.id }}
+                    />
+
+                  </ListItemIcon>
+                  <ListItemText id={att.id} primary={att.name} />
+                </ListItemButton>
+              </ListItem>
+            ))
+          ) : (
+            <p style={styles.statusMessage as React.CSSProperties}>No attachments found for this email.</p>
+          )}
+        </List>
+
+        {/* <div style={styles.attachmentsSection as React.CSSProperties}>
           {mailAttachments.length > 0 ? (
             mailAttachments.map((att) => (
               <label key={att.id} style={styles.attachmentLabel}>
@@ -323,7 +356,7 @@ const RegesterEmialAndAttachments = () => {
           ) : (
             <p style={styles.statusMessage as React.CSSProperties}>No attachments found for this email.</p>
           )}
-        </div>
+        </div> */}
 
         {/* Register Button */}
         <div style={styles.actionButtonContainer as React.CSSProperties}>
