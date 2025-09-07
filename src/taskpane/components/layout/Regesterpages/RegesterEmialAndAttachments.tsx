@@ -341,7 +341,7 @@ const RegesterEmialAndAttachments = () => {
               px: 3,
             }}
           >
-            Registar Email e Anexos
+            Registar Anexos
           </Button>
 
         </div>
