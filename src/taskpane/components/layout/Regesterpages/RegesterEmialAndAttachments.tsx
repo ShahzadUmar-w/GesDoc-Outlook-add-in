@@ -1,8 +1,8 @@
-import { Button, IconButton, Input, Box } from '@mui/material';
+import { Button, IconButton, Input, Box, List, ListItem, ListItemButton, ListItemIcon, Checkbox, ListItemText } from '@mui/material';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
+import CommentIcon from '@mui/icons-material/Comment';
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -302,8 +302,9 @@ const RegesterEmialAndAttachments = () => {
 
         </div>
 
-        {/* Attachments Checkboxes */}
-        <div style={styles.attachmentsSection as React.CSSProperties}>
+
+
+        {/* <div style={styles.attachmentsSection as React.CSSProperties}>
           {mailAttachments.length > 0 ? (
             mailAttachments.map((att) => (
               <label key={att.id} style={styles.attachmentLabel}>
@@ -321,7 +322,7 @@ const RegesterEmialAndAttachments = () => {
           ) : (
             <p style={styles.statusMessage as React.CSSProperties}>No attachments found for this email.</p>
           )}
-        </div>
+        </div> */}
 
         {/* Register Button */}
         <div style={styles.actionButtonContainer as React.CSSProperties}>
