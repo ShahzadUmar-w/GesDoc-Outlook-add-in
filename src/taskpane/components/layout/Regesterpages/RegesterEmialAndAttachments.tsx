@@ -304,7 +304,7 @@ const RegesterEmialAndAttachments = () => {
 
 
 
-        {/* <div style={styles.attachmentsSection as React.CSSProperties}>
+        <div style={styles.attachmentsSection as React.CSSProperties}>
           {mailAttachments.length > 0 ? (
             mailAttachments.map((att) => (
               <label key={att.id} style={styles.attachmentLabel}>
@@ -322,7 +322,7 @@ const RegesterEmialAndAttachments = () => {
           ) : (
             <p style={styles.statusMessage as React.CSSProperties}>No attachments found for this email.</p>
           )}
-        </div> */}
+        </div>
 
         {/* Register Button */}
         <div style={styles.actionButtonContainer as React.CSSProperties}>
