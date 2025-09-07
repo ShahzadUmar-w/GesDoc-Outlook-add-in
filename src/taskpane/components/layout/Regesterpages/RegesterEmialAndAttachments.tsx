@@ -308,15 +308,16 @@ const RegesterEmialAndAttachments = () => {
           {mailAttachments.length > 0 ? (
             mailAttachments.map((att) => (
               <label key={att.id} style={styles.attachmentLabel}>
-
-                <input
-                  type="checkbox"
-                  name={att.id}
-                  checked={att.isChecked}
-                  onChange={() => handleAttachmentChange(att.id)}
-                  style={styles.attachmentCheckbox}
-                />
-                {att.name}
+                <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', }}>
+                  <input
+                    type="checkbox"
+                    name={att.id}
+                    checked={att.isChecked}
+                    onChange={() => handleAttachmentChange(att.id)}
+                    style={styles.attachmentCheckbox}
+                  />
+                  {att.name} <CommentIcon />
+                </div>
               </label>
             ))
           ) : (
