@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Modal, Box, TextField, Button, Typography } from '@mui/material';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+
 
 const modalStyle = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 300,
+    width: 250,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    border: '2px solid #0000008a',
     boxShadow: 24,
     p: 4,
 };
@@ -34,16 +36,9 @@ function UsernameModal({ setShowModal }) {
                 <Typography variant="h6" component="h2">
                     Enter Your Username
                 </Typography>
-                <TextField
-                    label="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    fullWidth
-                    margin="normal"
-                    required
-                />
                 <Button variant="contained" onClick={handleSubmit}>
-                    Submit
+                    <ExitToAppIcon />
+                    Registar
                 </Button>
             </Box>
         </Modal>

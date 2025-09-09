@@ -10,6 +10,7 @@ import RegisterEmailScreen from "../layout/Regesterpages/RegisterEmailScreen";
 import Setting from "../layout/Settings/Setting";
 import RegesterEmialAndAttachments from "../layout/Regesterpages/RegesterEmialAndAttachments";
 import InvoiceFile from "../layout/Regesterpages/InvoiceFile";
+import UsernameModal from "../layout/Regesterpages/UsernameModal";
 
 
 const RouterApp: React.FC = () => {
@@ -31,7 +32,7 @@ const RouterApp: React.FC = () => {
     return (
         <>
             <Router>
-                {showModal}
+                {showModal && <UsernameModal setShowModal={setShowModal} />}
                 <Routes>
                     <Route path="/" element={<Getstart />} />
                     <Route path="/main" element={<MainScreen />} />
