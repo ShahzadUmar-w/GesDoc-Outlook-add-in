@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Modal, Box, TextField, Button, Typography } from '@mui/material';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import ErrorIcon from '@mui/icons-material/Error';
 
 
 const modalStyle = {
@@ -14,6 +15,10 @@ const modalStyle = {
     border: '2px solid #0000008a',
     boxShadow: 24,
     p: 4,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+
 };
 
 function UsernameModal({ setShowModal }) {
@@ -34,6 +39,7 @@ function UsernameModal({ setShowModal }) {
         <Modal open={true} onClose={() => setShowModal(false)}>
             <Box sx={modalStyle}>
                 <Typography variant="h6" component="h2">
+                    <ErrorIcon />
                     Enter Your Username
                 </Typography>
                 <Button variant="contained" onClick={handleSubmit}>
