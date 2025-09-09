@@ -47,7 +47,7 @@ function UsernameModal({ setShowModal }) {
                     <ErrorIcon style={{ color: 'orange' }} />
                     You're Not Registered
                 </Typography>
-                <Button variant="contained" onClick={handleSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 4, padding: '8px 15px' }}>
+                <Button variant="contained" onClick={handleSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 4, padding: '8px 20px' }}>
                     <LoginIcon />
                     Registar Now
                 </Button>
