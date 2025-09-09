@@ -21,22 +21,19 @@ const modalStyle = {
     alignItems: 'center',
     justifyContent: 'center',
     gap: '10px'  // space between elements
-
-
-
 };
 
 function UsernameModal({ setShowModal }) {
-    const [username, setUsername] = useState('');
+    const [username, setUsername] = useState('dsdd');
     const navigate = useNavigate();
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (username.trim()) {
             localStorage.setItem('username', username); // Store username
             setShowModal(false); // Close modal
-            navigate('/'); // Route to homepage
+            navigate('/setting'); // 
         } else {
-            alert('Please enter a valid username');
+            console.log('Please enter a valid username');
         }
     };
 

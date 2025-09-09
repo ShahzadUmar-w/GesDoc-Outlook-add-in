@@ -20,6 +20,12 @@ const SettingScreen = () => {
     const [isSaving, setIsSaving] = useState(false);
 
     const navigate = useNavigate()
+
+    const handleSaveSettings = () => {
+
+
+        navigate('/')
+    }
     return (
         <Box
             sx={{
@@ -93,7 +99,7 @@ const SettingScreen = () => {
             <Button
                 variant="contained"
                 color="primary"
-                // onClick={handleSaveSettings}
+                onClick={handleSaveSettings}
                 disabled={isSaving || !currentUsername || !currentServername} // Disable if empty
                 endIcon={isSaving ? <CircularProgress size={20} color="inherit" /> : <SaveIcon />}
                 size="large"
