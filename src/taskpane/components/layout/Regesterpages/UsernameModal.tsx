@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Modal, Box, TextField, Button, Typography } from '@mui/material';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import LoginIcon from '@mui/icons-material/Login';
 import ErrorIcon from '@mui/icons-material/Error';
 
 
@@ -17,6 +17,11 @@ const modalStyle = {
     p: 4,
     borderRadius: '8px',
     display: 'flex',
+    flexDirection: 'column',   // or 'row' if you want side by side
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '10px'  // space between elements
+
 
 
 };
@@ -38,12 +43,12 @@ function UsernameModal({ setShowModal }) {
     return (
         <Modal open={true} onClose={() => setShowModal(false)}>
             <Box sx={modalStyle}>
-                <Typography variant="h6" component="h2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 2 }}>
+                <Typography variant="h6" component="h2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 4 }}>
                     <ErrorIcon style={{ color: 'orange' }} />
                     You're Not Registered
                 </Typography>
-                <Button variant="contained" onClick={handleSubmit}>
-                    <ExitToAppIcon />
+                <Button variant="contained" onClick={handleSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 4, padding: '8px 15px' }}>
+                    <LoginIcon />
                     Registar Now
                 </Button>
             </Box>
