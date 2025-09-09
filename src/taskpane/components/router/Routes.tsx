@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable prettier/prettier */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Getstart from "../layout/GetStart/Getstart";
 import MainScreen from "../layout/Main/MainScreen";
@@ -13,19 +13,33 @@ import InvoiceFile from "../layout/Regesterpages/InvoiceFile";
 
 
 const RouterApp: React.FC = () => {
-    
-    
+
+    const [showModal, setShowModal] = useState(false);
+
+    useEffect(() => {
+        // Initialize Office.js
+        Office.onReady(() => {
+            console.log('Office is ready');
+            // Check localStorage for username
+            const username = localStorage.getItem('username');
+            if (!username) {
+                setShowModal(true); // Show modal if no username
+            }
+        });
+    }, []);
+
     return (
         <>
             <Router>
+                {showModal}
                 <Routes>
                     <Route path="/" element={<Getstart />} />
-                    <Route path="/main" element={<MainScreen/>} />
-                    <Route path="/RegisterEmailScreen" element={<RegisterEmailScreen/>} />
-                    <Route path="/RegesterEmialAndAttachments" element={<RegesterEmialAndAttachments/>} />
-                    <Route path="/invoice" element={<InvoiceFile/>} />
+                    <Route path="/main" element={<MainScreen />} />
+                    <Route path="/RegisterEmailScreen" element={<RegisterEmailScreen />} />
+                    <Route path="/RegesterEmialAndAttachments" element={<RegesterEmialAndAttachments />} />
+                    <Route path="/invoice" element={<InvoiceFile />} />
 
-                    <Route path="/setting" element={<Setting/>} />
+                    <Route path="/setting" element={<Setting />} />
 
                 </Routes>
             </Router>
