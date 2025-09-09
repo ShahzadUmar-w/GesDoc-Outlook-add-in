@@ -11,10 +11,13 @@ const modalStyle = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 250,
+    height: 250,
     bgcolor: 'background.paper',
-    border: '2px solid #8f8989ff',
     boxShadow: 24,
     p: 4,
+    borderRadius: '8px',
+    display: 'flex',
+
 
 };
 
@@ -35,8 +38,8 @@ function UsernameModal({ setShowModal }) {
     return (
         <Modal open={true} onClose={() => setShowModal(false)}>
             <Box sx={modalStyle}>
-                <Typography variant="h6" component="h2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <ErrorIcon />
+                <Typography variant="h6" component="h2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 2 }}>
+                    <ErrorIcon style={{ color: 'orange' }} />
                     You're Not Registered
                 </Typography>
                 <Button variant="contained" onClick={handleSubmit}>
