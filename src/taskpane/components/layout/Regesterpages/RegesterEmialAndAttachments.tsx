@@ -6,6 +6,7 @@ import CommentIcon from '@mui/icons-material/Comment';
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SaveEmail_and_attachments } from '../../Services/SaveEmail_and_attachments';
 
 const RegesterEmialAndAttachments = () => {
   // State for the email input field, will be populated by Office JS
@@ -95,7 +96,32 @@ const RegesterEmialAndAttachments = () => {
     // This content would then be sent to your network share/DMS via an API.
   };
 
+
+
+
   // Inline styles to mimic the wireframe's appearance
+
+
+  const handleSendFile = () => {
+
+    // const demoFile: File = { name: "test.pdf", size: "200KB" };
+    const demoFile = new File(["Dummy PDF content"], "test.pdf", {
+      type: "application/pdf",
+    });
+    SaveEmail_and_attachments(demoFile, (data, err) => {
+      if (data) {
+        console.log(data);
+
+      }
+
+      if (err) {
+        console.log(err);
+
+      }
+    })
+  }
+
+
   const styles = {
     container: {
       fontFamily: 'Arial, sans-serif',
@@ -367,7 +393,7 @@ const RegesterEmialAndAttachments = () => {
             fullWidth
             startIcon={<AttachFileIcon />}
             endIcon={<ArrowForwardIcon />}
-            //   onClick={() => navigateWithLoader('/RegesterEmialAndAttachments')}
+            onClick={handleSendFile}
             sx={{
               backgroundColor: '#e56100',
               py: 1.5,
