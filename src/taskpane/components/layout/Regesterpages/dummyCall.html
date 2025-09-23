@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload API Test - Documents & Invoices</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .upload-section {
+      padding: 25px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    h2 {
+      color: #2575fc;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    h2 i {
+      font-size: 1.5rem;
+    }
+    
+    .file-input-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #555;
+    }
+    
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 2px dashed #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      transition: all 0.3s;
+    }
+    
+    input[type="file"]:hover {
+      border-color: #2575fc;
+      background-color: #f0f5ff;
+    }
+    
+    .btn {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+    }
+    
+    .btn:active {
+      transform: translateY(0);
+    }
+    
+    .response-container {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #f8f9fa;
+      border-left: 4px solid #2575fc;
+    }
+    
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+    }
+    
+    .success {
+      border-left-color: #28a745;
+      background-color: #f0fff4;
+    }
+    
+    .error {
+      border-left-color: #dc3545;
+      background-color: #fff5f5;
+    }
+    
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #2575fc, transparent);
+      margin: 10px 0;
+    }
+    
+    @media (max-width: 600px) {
+      .container {
+        border-radius: 0;
+      }
+      
+      header {
+        padding: 20px 15px;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Upload API Test</h1>
+      <p class="subtitle">Upload documents and invoices to the API</p>
+    </header>
+    
+    <!-- Document Upload Section -->
+    <section class="upload-section">
+      <h2>
+        <span>📄</span> Upload Document
+      </h2>
+      
+      <div class="file-input-group">
+        <label for="mainFile">Main Document (Required)</label>
+        <input type="file" id="mainFile" />
+      </div>
+      
+      <div class="file-input-group">
+        <label for="att1">Attachment 1 (Optional)</label>
+        <input type="file" id="att1" />
+      </div>
+      
+      <div class="file-input-group">
+        <label for="att2">Attachment 2 (Optional)</label>
+        <input type="file" id="att2" />
+      </div>
+      
+      <button class="btn" onclick="uploadDoc()">
+        <span>📤</span> Upload Document
+      </button>
+      
+      <div class="response-container" id="docResponse">
+        <pre>Document upload response will appear here...</pre>
+      </div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <!-- Invoice Upload Section -->
+    <section class="upload-section">
+      <h2>
+        <span>🧾</span> Upload Invoice
+      </h2>
+      
+      <div class="file-input-group">
+        <label for="invoiceFile">Invoice File (Required)</label>
+        <input type="file" id="invoiceFile" />
+      </div>
+      
+      <div class="file-input-group">
+        <label for="invoiceAtt1">Invoice Attachment 1 (Optional)</label>
+        <input type="file" id="invoiceAtt1" />
+      </div>
+      
+      <div class="file-input-group">
+        <label for="invoiceAtt2">Invoice Attachment 2 (Optional)</label>
+        <input type="file" id="invoiceAtt2" />
+      </div>
+      
+      <button class="btn" onclick="uploadInvoice()">
+        <span>📤</span> Upload Invoice
+      </button>
+      
+      <div class="response-container" id="invoiceResponse">
+        <pre>Invoice upload response will appear here...</pre>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    async function uploadDoc() {
+      const mainFile = document.querySelector("#mainFile").files[0];
+      if (!mainFile) {
+        alert("Please select a main file to upload.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("username", "luis.barata"); // required
+      formData.append("file", mainFile); // required main file
+
+      // optional attachments if selected
+      const att1 = document.querySelector("#att1").files[0];
+      const att2 = document.querySelector("#att2").files[0];
+      if (att1) formData.append("ATT_1", att1);
+      if (att2) formData.append("ATT_2", att2);
+
+      try {
+        const response = await fetch(
+          "http://ambilital.beiranet.pt:6363/APIv3/upload_api_doc.php",
+          {
+            method: "POST",
+            body: formData
+          }
+        );
+
+        const result = await response.json();
+        const responseElement = document.getElementById("docResponse");
+        responseElement.innerHTML = `<pre>${JSON.stringify(result, null, 2)}</pre>`;
+        responseElement.className = "response-container success";
+      } catch (error) {
+        const responseElement = document.getElementById("docResponse");
+        responseElement.innerHTML = `<pre>❌ Error: ${error.message}</pre>`;
+        responseElement.className = "response-container error";
+      }
+    }
+
+    async function uploadInvoice() {
+      const invoiceFile = document.querySelector("#invoiceFile").files[0];
+      if (!invoiceFile) {
+        alert("Please select an invoice file to upload.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("username", "luis.barata"); // required
+      formData.append("file", invoiceFile); // required invoice file
+
+      // optional attachments if selected
+      const att1 = document.querySelector("#invoiceAtt1").files[0];
+      const att2 = document.querySelector("#invoiceAtt2").files[0];
+      if (att1) formData.append("ATT_1", att1);
+      if (att2) formData.append("ATT_2", att2);
+
+      try {
+        const response = await fetch(
+          "http://ambilital.beiranet.pt:6363/APIv3/upload_api_fac.php",
+          {
+            method: "POST",
+            body: formData
+          }
+        );
+
+        const result = await response.json();
+        const responseElement = document.getElementById("invoiceResponse");
+        responseElement.innerHTML = `<pre>${JSON.stringify(result, null, 2)}</pre>`;
+        responseElement.className = "response-container success";
+      } catch (error) {
+        const responseElement = document.getElementById("invoiceResponse");
+        responseElement.innerHTML = `<pre>❌ Error: ${error.message}</pre>`;
+        responseElement.className = "response-container error";
+      }
+    }
+  </script>
+</body>
+</html>

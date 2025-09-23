@@ -18,6 +18,8 @@ const SettingScreen = () => {
     const [currentUsername, setCurrentUsername] = useState('');
     const [currentServername, setCurrentServername] = useState('');
     const [isSaving, setIsSaving] = useState(false);
+    const [username, setUsername] = useState('dsdd');
+
 
     const navigate = useNavigate()
 

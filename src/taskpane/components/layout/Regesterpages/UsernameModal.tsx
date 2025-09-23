@@ -24,7 +24,7 @@ const modalStyle = {
 };
 
 function UsernameModal({ setShowModal }) {
-    const [username, setUsername] = useState('dsdd');
+    const [username, setUsername] = useState('Sajjad');
     const navigate = useNavigate();
 
     const handleSubmit = async () => {

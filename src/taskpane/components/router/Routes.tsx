@@ -20,7 +20,9 @@ const RouterApp: React.FC = () => {
     useEffect(() => {
         // Initialize Office.js
         Office.onReady(() => {
-            console.log('Office is ready');
+            console.log(showModal);
+
+            console.log('Office is ready in router');
             // Check localStorage for username
             const username = localStorage.getItem('username');
             if (!username) {
