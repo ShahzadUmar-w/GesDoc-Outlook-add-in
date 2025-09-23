@@ -337,7 +337,7 @@ const RegesterEmialAndAttachments = () => {
               <ListItem
                 key={att.id}
                 secondaryAction={
-                  <IconButton edge="end" aria-label="comments">
+                  <IconButton sx={{ color: 'skyblue', }} edge="end" aria-label="file">
                     <InsertDriveFileIcon />
                   </IconButton>
                 }
