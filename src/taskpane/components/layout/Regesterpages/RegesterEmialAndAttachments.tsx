@@ -2,7 +2,7 @@ import { Button, IconButton, Input, Box, List, ListItem, ListItemButton, ListIte
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import CommentIcon from '@mui/icons-material/Comment';
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -338,7 +338,7 @@ const RegesterEmialAndAttachments = () => {
                 key={att.id}
                 secondaryAction={
                   <IconButton edge="end" aria-label="comments">
-                    <CommentIcon />
+                    <InsertDriveFileIcon />
                   </IconButton>
                 }
                 disablePadding
