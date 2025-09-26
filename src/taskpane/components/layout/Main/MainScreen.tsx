@@ -25,6 +25,7 @@ const MainScreen = () => {
   return (
     <Box
       sx={{
+        margin: '0 5px',
         minHeight: '100vh',
         width: '100%',
         display: 'flex',
@@ -111,7 +112,7 @@ const MainScreen = () => {
           endIcon={<ArrowForwardIcon />}
           onClick={() => navigateWithLoader('/RegesterEmialAndAttachments')}
           sx={{
-            backgroundColor:'#e56100',
+            backgroundColor: '#e56100',
             py: 1.5,
             justifyContent: 'space-between',
             px: 3,
