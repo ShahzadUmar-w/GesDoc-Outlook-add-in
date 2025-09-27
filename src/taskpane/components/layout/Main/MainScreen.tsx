@@ -25,7 +25,6 @@ const MainScreen = () => {
   return (
     <Box
       sx={{
-        margin: '0 5px',
         minHeight: '100vh',
         width: '100%',
         display: 'flex',
@@ -81,7 +80,7 @@ const MainScreen = () => {
         spacing={2.5}
         sx={{
           width: '100%',
-          maxWidth: 320,
+          maxWidth: 300,
         }}
       >
         {/* Register Email */}

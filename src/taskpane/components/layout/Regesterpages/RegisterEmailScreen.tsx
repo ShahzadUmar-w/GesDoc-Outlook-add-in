@@ -7,6 +7,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import SendIcon from '@mui/icons-material/Send'; // Icon for Send action
 import { Link, useNavigate } from 'react-router-dom';
+import { Get_Email_file } from '../../Services/Get_Email_file';
 
 const RegisterEmailScreen = () => {
     const theme = useTheme();
@@ -21,6 +22,7 @@ const RegisterEmailScreen = () => {
 
 
     useEffect(() => {
+        Get_Email_file()
         setemailSubject(Office.context.mailbox.item.subject)
         setemailSender(Office.context.mailbox.item.sender.emailAddress)
         let Settings = localStorage.getItem('user_data')
@@ -28,8 +30,8 @@ const RegisterEmailScreen = () => {
     }, [])
 
 
-    const handleSaveClick = () => {
-        // onSave(comment); // Pass the comment to the onSave handler in App.js
+    const handleSaveClick = async () => {
+        await Get_Email_file()
     };
 
     return (
