@@ -18,7 +18,7 @@ export const SaveEmail_and_attachments = async (EMLFile: File, callback) => {
 
     try {
         const response = await fetch(
-            "http://ambilital.beiranet.pt:6363/APIv3/upload_api_doc.php",
+            "https://gesdoc.beiranet.pt/APIv3/upload_api_doc.php",
             {
                 method: "POST",
                 body: formData
