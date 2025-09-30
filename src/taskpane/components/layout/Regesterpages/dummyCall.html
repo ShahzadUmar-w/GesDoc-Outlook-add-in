@@ -337,6 +337,7 @@
       }
     }
 
+    /*
     async function uploadInvoice() {
       const invoiceFile = document.querySelector("#invoiceFile").files[0];
       if (!invoiceFile) {
@@ -371,6 +372,72 @@
         const responseElement = document.getElementById("invoiceResponse");
         responseElement.innerHTML = `<pre>❌ Error: ${error.message}</pre>`;
         responseElement.className = "response-container error";
+      }
+    }
+      */
+    async function uploadInvoice() {
+      const invoiceFile = document.querySelector("#invoiceFile").files[0];
+      if (!invoiceFile) {
+        alert("Please select an invoice file to upload.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("username", "luis.barata");
+      formData.append("file", invoiceFile);
+
+      const att1 = document.querySelector("#invoiceAtt1").files[0];
+      const att2 = document.querySelector("#invoiceAtt2").files[0];
+      if (att1) formData.append("ATT_1", att1);
+      if (att2) formData.append("ATT_2", att2);
+
+      try {
+        console.log("Starting upload...");
+
+        const response = await fetch(
+          "https://gesdoc.beiranet.pt/APIv3/upload_api_fac.php",
+          {
+            method: "POST",
+            body: formData
+          }
+        );
+
+        console.log("Response status:", response.status);
+        console.log("Response headers:", Object.fromEntries(response.headers.entries()));
+
+        // Get response as text first
+        const responseText = await response.text();
+        console.log("Raw response:", responseText);
+
+        let result;
+        if (responseText.trim()) {
+          try {
+            result = JSON.parse(responseText);
+          } catch (parseError) {
+            // If it's not JSON but we got a successful status, show the raw response
+            if (response.ok) {
+              result = { message: "Non-JSON response", raw: responseText.substring(0, 200) + "..." };
+            } else {
+              throw new Error(`Server returned non-JSON: ${responseText.substring(0, 100)}`);
+            }
+          }
+        } else {
+          result = { message: "Empty response from server" };
+        }
+
+        const responseElement = document.getElementById("invoiceResponse");
+        if (response.ok) {
+          responseElement.innerHTML = `<pre>${JSON.stringify(result, null, 2)}</pre>`;
+          responseElement.className = "response-container success";
+        } else {
+          responseElement.innerHTML = `<pre>❌ Server Error (${response.status}): ${JSON.stringify(result, null, 2)}</pre>`;
+          responseElement.className = "response-container error";
+        }
+      } catch (error) {
+        const responseElement = document.getElementById("invoiceResponse");
+        responseElement.innerHTML = `<pre>❌ Error: ${error.message}</pre>`;
+        responseElement.className = "response-container error";
+        console.error("Upload error:", error);
       }
     }
   </script>
