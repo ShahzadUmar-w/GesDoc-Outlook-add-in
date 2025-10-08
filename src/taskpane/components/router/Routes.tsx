@@ -24,7 +24,7 @@ const RouterApp: React.FC = () => {
 
             console.log('Office is ready in router');
             // Check localStorage for username
-            const username = localStorage.getItem('username');
+            const username = localStorage.getItem('');
             if (!username) {
                 setShowModal(true); // Show modal if no username
             }

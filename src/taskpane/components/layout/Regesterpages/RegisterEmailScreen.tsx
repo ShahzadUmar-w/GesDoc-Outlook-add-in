@@ -1,7 +1,8 @@
 // src/components/RegisterEmailScreen.js (New Page)
 import React, { useEffect, useState } from 'react';
 import {
-    Box, Typography, Button, CircularProgress, Alert, useTheme, Stack, IconButton, TextField
+    Box, Typography, Button, CircularProgress, Alert, useTheme, Stack, IconButton, TextField,
+    LinearProgress
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
@@ -31,8 +32,11 @@ const RegisterEmailScreen = () => {
 
 
     const handleSaveClick = async () => {
+        setisLoading(true)
         await Get_Email_file()
+        setisLoading(false)
     };
+
 
     return (
         <Box
@@ -112,14 +116,14 @@ const RegisterEmailScreen = () => {
             />
 
             {/* Settings Warning */}
-            {!hasSettings && (
+            {/* {!hasSettings && (
                 <Alert severity="warning" sx={{ mb: 3, width: '100%', maxWidth: 380 }}>
                     Please configure Username and Server Name in settings before proceeding. <br />
                     <Link to={'/setting'}>
                         Lets configure
                     </Link>
                 </Alert>
-            )}
+            )} */}
 
             {/* Save Button */}
             <Button

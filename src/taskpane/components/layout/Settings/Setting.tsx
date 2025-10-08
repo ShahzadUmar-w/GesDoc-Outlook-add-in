@@ -24,9 +24,15 @@ const SettingScreen = () => {
     const navigate = useNavigate()
 
     const handleSaveSettings = () => {
+        if (currentServername.trim()) {
+            localStorage.setItem('username', currentServername)
+            navigate('/')
+        } else {
+            if (!currentServername) {
 
+            }
+        }
 
-        navigate('/')
     }
     return (
         <Box
