@@ -7,6 +7,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SettingsIcon from '@mui/icons-material/Settings'; // Main icon for settings screen
 import SaveIcon from '@mui/icons-material/Save'; // Icon for save button
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 // import { LOCAL_STORAGE_KEYS } from '../utils/constants'; // Ensure correct path for constants
 
@@ -26,10 +27,11 @@ const SettingScreen = () => {
     const handleSaveSettings = () => {
         if (currentServername.trim()) {
             localStorage.setItem('username', currentServername)
+            toast.success("This is a toast notification !");
             navigate('/')
         } else {
             if (!currentServername) {
-
+                toast.warning("Add server url")
             }
         }
 
