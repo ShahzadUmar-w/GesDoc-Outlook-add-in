@@ -10,7 +10,7 @@ import SendIcon from '@mui/icons-material/Send'; // Icon for Send action
 import { Link, useNavigate } from 'react-router-dom';
 import { Get_Email_file } from '../../Services/Get_Email_file';
 import { SaveOnlyEmail } from '../../Services/SaveOnlyEmail';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const RegisterEmailScreen = () => {
     const theme = useTheme();
@@ -48,8 +48,10 @@ const RegisterEmailScreen = () => {
         SaveOnlyEmail(mainEmailFile, "luis.barata", (result, error) => {
             if (error) {
                 console.error("Upload failed:", error);
+                toast.error("Upload failed")
             } else {
                 console.log("Upload result:", result);
+                toast.success("Upload completed")
             }
         });
 

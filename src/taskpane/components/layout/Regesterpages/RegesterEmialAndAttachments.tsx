@@ -7,6 +7,7 @@ import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SaveEmail_and_attachments } from '../../Services/SaveEmail_and_attachments';
+import { toast } from 'react-toastify';
 
 const RegesterEmialAndAttachments = () => {
   // State for the email input field, will be populated by Office JS
@@ -108,8 +109,10 @@ const RegesterEmialAndAttachments = () => {
       (data, err) => {
         if (data) {
           console.log(data);
+          toast.success("Attachments registered!")
         }
         if (err) {
+          toast.error("Registration Failed!")
           console.log(err);
         }
       }
