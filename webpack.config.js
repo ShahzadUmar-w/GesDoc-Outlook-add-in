@@ -28,7 +28,7 @@ module.exports = async (env, options) => {
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'bundle.js',
+      filename: '[name].bundle.js',
       clean: true,
     },
     resolve: {
@@ -54,16 +54,17 @@ module.exports = async (env, options) => {
           use: "html-loader",
         },
         {
+          test: /\.css$/i,
+          use: ["style-loader", "css-loader"],
+        },
+        {
           test: /\.(png|jpg|jpeg|ttf|woff|woff2|gif|ico)$/,
           type: "asset/resource",
           generator: {
             filename: "assets/[name][ext][query]",
           },
         },
-        {
-          test: /\.css$/i,     // Match CSS files
-          use: ['style-loader', 'css-loader'],  // Process CSS files with these loaders
-        },
+
       ],
     },
     plugins: [
