@@ -24,17 +24,12 @@ const modalStyle = {
 };
 
 function UsernameModal({ setShowModal }) {
-    const [username, setUsername] = useState('Sajjad');
+    // const [username, setUsername] = useState('Sajjad');
     const navigate = useNavigate();
 
     const handleSubmit = async () => {
-        if (username.trim()) {
-            localStorage.setItem('username', username); // Store username
-            setShowModal(false); // Close modal
-            navigate('/setting'); // 
-        } else {
-            console.log('Please enter a valid username');
-        }
+        setShowModal(false)
+        navigate('/setting');
     };
 
     return (

@@ -5,6 +5,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import React, { useState, useEffect } from 'react';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 const InvoiceFile = () => {
   const [emailInput, setEmailInput] = useState("");
@@ -46,11 +47,7 @@ const InvoiceFile = () => {
             setMailAttachments([]);
           }
         } else {
-          // setToast({
-          //   open: true,
-          //   message: "Please open this add-in inside Outlook.",
-          //   severity: "error",
-          // });
+          toast.error("Please open this add-in inside Outlook.")
         }
       } catch (err) {
         console.error("Error initializing Office or fetching data:", err);
@@ -79,6 +76,11 @@ const InvoiceFile = () => {
 
   // Handler for the main registration button click
   const handleRegisterClick = () => {
+    if (mailAttachments) {
+      toast.success("Attachments fetched successfully!")
+    } else {
+      toast.error("Attachments not available!")
+    }
     console.log('Register Email and Attachments clicked!');
     console.log('Email entered:', emailInput);
     const selectedAttachments = mailAttachments.filter(att => att.isChecked);
@@ -294,7 +296,7 @@ const InvoiceFile = () => {
           fullWidth
           startIcon={<ReceiptLongIcon />}
           endIcon={<ArrowForwardIcon />}
-          //   onClick={() => navigateWithLoader('/invoice')}
+          onClick={handleRegisterClick}
           sx={{
             py: 1.5,
             justifyContent: 'space-between',
@@ -315,6 +317,8 @@ const InvoiceFile = () => {
         <p style={styles.filenameExample as React.CSSProperties}>your_email--date--time--att1</p>
         <p style={styles.filenameExample as React.CSSProperties}>your_email--date--time--att2</p>
       </div>
+      <ToastContainer />
+
     </Box>
   );
 }

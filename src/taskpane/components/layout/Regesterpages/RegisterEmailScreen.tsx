@@ -159,6 +159,8 @@ const RegisterEmailScreen = () => {
             >
                 {isLoading ? "Saving..." : "Save Email to GetDoc"}
             </Button>
+            <ToastContainer />
+
         </Box>
     );
 };
