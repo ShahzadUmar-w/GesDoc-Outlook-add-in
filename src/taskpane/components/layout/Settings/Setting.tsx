@@ -29,7 +29,7 @@ const SettingScreen = () => {
             localStorage.setItem('username', currentServername)
 
 
-            toast.success("This is a toast notification !");
+            toast.success("username and url registered!");
             navigate('/')
 
         }
