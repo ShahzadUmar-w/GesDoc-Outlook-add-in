@@ -1,4 +1,4 @@
-import { Button, IconButton, Input, Box, List, ListItem, ListItemButton, ListItemIcon, Checkbox, ListItemText } from '@mui/material';
+import { Button, IconButton, Input, Box, List, ListItem, ListItemButton, ListItemIcon, Checkbox, ListItemText, CircularProgress, Snackbar, Alert } from '@mui/material';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -100,17 +100,20 @@ const RegesterEmialAndAttachments = () => {
     const demoFile = new File(["Dummy PDF content"], "test.pdf", {
       type: "application/pdf",
     });
-    SaveEmail_and_attachments(demoFile, (data, err) => {
-      if (data) {
-        console.log(data);
-
+    // Example: empty attachments array and hardcoded username
+    SaveEmail_and_attachments(
+      demoFile,
+      [],
+      emailInput, // using sender email as username
+      (data, err) => {
+        if (data) {
+          console.log(data);
+        }
+        if (err) {
+          console.log(err);
+        }
       }
-
-      if (err) {
-        console.log(err);
-
-      }
-    })
+    )
   }
 
 
@@ -357,35 +360,35 @@ const RegesterEmialAndAttachments = () => {
         >
           Registar Anexos
         </Button>
+      </div>
+      {/* Info */}
+      <Box mt={3} fontSize={13} color="text.secondary">
+        <p>This will copy the email and attachments to your GesDoc.</p>
+        <p>Example filenames:</p>
+        <code>your_email--date--time.pdf</code>
+        <br />
+        <code>your_email--date--time--att1</code>
+        <br />
+        <code>your_email--date--time--att2</code>
+      </Box>
 
-        {/* Info */}
-        <Box mt={3} fontSize={13} color="text.secondary">
-          <p>This will copy the email and attachments to your GesDoc.</p>
-          <p>Example filenames:</p>
-          <code>your_email--date--time.pdf</code>
-          <br />
-          <code>your_email--date--time--att1</code>
-          <br />
-          <code>your_email--date--time--att2</code>
-        </Box>
-
-        {/* Snackbar notifications */}
-        <Snackbar
-          open={snackbar.open}
-          autoHideDuration={3000}
+      {/* Snackbar notifications */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={3000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
           onClose={handleCloseSnackbar}
-          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          severity={snackbar.severity}
+          sx={{ width: "100%" }}
         >
-          <Alert
-            onClose={handleCloseSnackbar}
-            severity={snackbar.severity}
-            sx={{ width: "100%" }}
-          >
-            {snackbar.message}
-          </Alert>
-        </Snackbar>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
-};
+}
 
-export default RegisterEmailAndAttachments;
+export default RegesterEmialAndAttachments;
