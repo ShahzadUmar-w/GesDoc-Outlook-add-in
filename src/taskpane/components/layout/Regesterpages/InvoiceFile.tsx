@@ -6,6 +6,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import React, { useState, useEffect } from 'react';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 const InvoiceFile = () => {
   // State for the email input field, will be populated by Office JS
   const [emailInput, setEmailInput] = useState('');
@@ -16,6 +17,8 @@ const InvoiceFile = () => {
   // --- navigation
   const navigate = useNavigate()
   // --- Office JS Integration ---
+
+
   useEffect(() => {
     // This function will initialize Office and fetch data
     const initializeOfficeAndGetData = async () => {
@@ -41,6 +44,7 @@ const InvoiceFile = () => {
               isChecked: false, // Start all as unchecked
             }));
             setMailAttachments(formattedAttachments);
+            toast.success("Invoice registered to DMS")
           } else {
             console.log("No attachments found for this email.");
             setMailAttachments([]);
@@ -58,6 +62,7 @@ const InvoiceFile = () => {
         }
       } catch (err) {
         console.error("Error initializing Office or fetching data:", err);
+        toast.error("No attachments found for this email.")
         setError("Failed to load email data. Make sure an email is selected.");
         setEmailInput("Error fetching email");
         setMailAttachments([]);
@@ -66,13 +71,17 @@ const InvoiceFile = () => {
       }
     };
 
+
     // Call the function to fetch data
-    initializeOfficeAndGetData();
 
     // The empty dependency array ensures this effect runs only once after initial render
   }, []);
 
   // Handler for attachment checkbox changes
+  const navigateWithLoader = () => {
+    initializeOfficeAndGetData()
+  }
+
   const handleAttachmentChange = (attachmentId) => {
     setMailAttachments(prevAttachments =>
       prevAttachments.map(att =>
@@ -354,7 +363,7 @@ const InvoiceFile = () => {
             fullWidth
             startIcon={<ReceiptLongIcon />}
             endIcon={<ArrowForwardIcon />}
-            //   onClick={() => navigateWithLoader('/invoice')}
+            onClick={navigateWithLoader}
             sx={{
               py: 1.5,
               justifyContent: 'space-between',
@@ -365,6 +374,8 @@ const InvoiceFile = () => {
             Registar Fatura
           </Button>
         </div>
+
+        <ToastContainer />
 
         {/* Description and Filename Examples */}
         <div style={styles.descriptionSection as React.CSSProperties}>
@@ -381,3 +392,7 @@ const InvoiceFile = () => {
 };
 
 export default InvoiceFile;
+
+function initializeOfficeAndGetData() {
+  throw new Error('Function not implemented.');
+}
