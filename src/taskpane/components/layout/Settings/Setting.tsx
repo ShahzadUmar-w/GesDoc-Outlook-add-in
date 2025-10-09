@@ -7,7 +7,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SettingsIcon from '@mui/icons-material/Settings'; // Main icon for settings screen
 import SaveIcon from '@mui/icons-material/Save'; // Icon for save button
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 // import { LOCAL_STORAGE_KEYS } from '../utils/constants'; // Ensure correct path for constants
 
@@ -19,7 +20,6 @@ const SettingScreen = () => {
     const [currentUsername, setCurrentUsername] = useState('');
     const [currentServername, setCurrentServername] = useState('');
     const [isSaving, setIsSaving] = useState(false);
-    const [username, setUsername] = useState('dsdd');
 
 
     const navigate = useNavigate()
@@ -27,14 +27,19 @@ const SettingScreen = () => {
     const handleSaveSettings = () => {
         if (currentServername.trim()) {
             localStorage.setItem('username', currentServername)
+
+
             toast.success("This is a toast notification !");
             navigate('/')
-        } else {
-            if (!currentServername) {
-                toast.warning("Add server url")
-            }
+
         }
 
+        if (!currentServername) {
+            toast.warning("Add server url")
+        }
+        if (!currentUsername) {
+            toast.warning("Add username")
+        }
     }
     return (
         <Box
@@ -52,6 +57,7 @@ const SettingScreen = () => {
         >
             {/* Back Button */}
             {/* Only show back button if onBack callback is provided by parent */}
+            <ToastContainer />
 
             <IconButton
                 sx={{ position: 'absolute', top: 8, left: 8, color: theme.palette.text.secondary, zIndex: 1 }}
@@ -110,7 +116,6 @@ const SettingScreen = () => {
                 variant="contained"
                 color="primary"
                 onClick={handleSaveSettings}
-                disabled={isSaving || !currentUsername || !currentServername} // Disable if empty
                 endIcon={isSaving ? <CircularProgress size={20} color="inherit" /> : <SaveIcon />}
                 size="large"
                 fullWidth

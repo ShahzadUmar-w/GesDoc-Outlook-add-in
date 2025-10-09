@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 const Dotenv = require('dotenv-webpack');
+const path = require('path')
 
 
 const urlDev = "https://localhost:3000/";
@@ -26,6 +27,8 @@ module.exports = async (env, options) => {
       commands: "./src/commands/commands.ts",
     },
     output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'bundle.js',
       clean: true,
     },
     resolve: {
@@ -56,6 +59,10 @@ module.exports = async (env, options) => {
           generator: {
             filename: "assets/[name][ext][query]",
           },
+        },
+        {
+          test: /\.css$/i,     // Match CSS files
+          use: ['style-loader', 'css-loader'],  // Process CSS files with these loaders
         },
       ],
     },
