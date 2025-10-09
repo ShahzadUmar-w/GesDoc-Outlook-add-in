@@ -9,11 +9,8 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import SendIcon from '@mui/icons-material/Send'; // Icon for Send action
 import { Link, useNavigate } from 'react-router-dom';
 import { Get_Email_file } from '../../Services/Get_Email_file';
-<<<<<<< HEAD
-import { toast, ToastContainer } from 'react-toastify';
-=======
 import { SaveOnlyEmail } from '../../Services/SaveOnlyEmail';
->>>>>>> 2490e4843d16057d46af5fc94b95f10fd27383ec
+import { ToastContainer } from 'react-toastify';
 
 const RegisterEmailScreen = () => {
     const theme = useTheme();
@@ -28,7 +25,7 @@ const RegisterEmailScreen = () => {
 
 
     useEffect(() => {
-       
+
         setemailSubject(Office.context.mailbox.item.subject)
         setemailSender(Office.context.mailbox.item.sender.emailAddress)
         let Settings = localStorage.getItem('user_data')
@@ -37,28 +34,25 @@ const RegisterEmailScreen = () => {
 
 
     const handleSaveClick = async () => {
-<<<<<<< HEAD
-        setisLoading(true)
-        try {
-            await Get_Email_file()
-            toast.success("Email saved to DMS successfully!");
-        } catch (error) {
-            console.error(error)
-            toast.error("Failed to save email. Please try again.");
-        } finally {
-            setisLoading(false)
-        }
-=======
-       const mainEmailFile= await Get_Email_file()
-       SaveOnlyEmail(mainEmailFile, "luis.barata", (result, error) => {
-  if (error) {
-    console.error("Upload failed:", error);
-  } else {
-    console.log("Upload result:", result);
-  }
-});
+        // setisLoading(true)
+        // try {
+        //     await Get_Email_file()
+        //     toast.success("Email saved to DMS successfully!");
+        // } catch (error) {
+        //     console.error(error)
+        //     toast.error("Failed to save email. Please try again.");
+        // } finally {
+        //     setisLoading(false)
+        // }
+        const mainEmailFile = await Get_Email_file()
+        SaveOnlyEmail(mainEmailFile, "luis.barata", (result, error) => {
+            if (error) {
+                console.error("Upload failed:", error);
+            } else {
+                console.log("Upload result:", result);
+            }
+        });
 
->>>>>>> 2490e4843d16057d46af5fc94b95f10fd27383ec
     };
 
 

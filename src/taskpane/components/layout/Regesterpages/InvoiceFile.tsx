@@ -2,10 +2,10 @@ import { Button, FormControl, IconButton, Input, InputLabel, MenuItem, Select, B
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-
 import React, { useState, useEffect } from 'react';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import { useNavigate } from 'react-router-dom';
+
 const InvoiceFile = () => {
   const [emailInput, setEmailInput] = useState("");
   const [mailAttachments, setMailAttachments] = useState<any[]>([]);
@@ -15,6 +15,7 @@ const InvoiceFile = () => {
 
   // --- navigation
   const navigate = useNavigate()
+
   // --- Office JS Integration ---
   useEffect(() => {
     const initializeOfficeAndGetData = async () => {
@@ -45,11 +46,11 @@ const InvoiceFile = () => {
             setMailAttachments([]);
           }
         } else {
-          setToast({
-            open: true,
-            message: "Please open this add-in inside Outlook.",
-            severity: "error",
-          });
+          // setToast({
+          //   open: true,
+          //   message: "Please open this add-in inside Outlook.",
+          //   severity: "error",
+          // });
         }
       } catch (err) {
         console.error("Error initializing Office or fetching data:", err);
@@ -319,6 +320,4 @@ const InvoiceFile = () => {
 }
 export default InvoiceFile;
 
-function setToast(arg0: { open: boolean; message: string; severity: string; }) {
-  throw new Error('Function not implemented.');
-}
+
