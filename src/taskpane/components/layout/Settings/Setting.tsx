@@ -57,7 +57,7 @@ const SettingScreen = () => {
         >
             {/* Back Button */}
             {/* Only show back button if onBack callback is provided by parent */}
-            <ToastContainer position="bottom-center" />
+            <ToastContainer position="bottom-right" />
 
             <IconButton
                 sx={{ position: 'absolute', top: 8, left: 8, color: theme.palette.text.secondary, zIndex: 1 }}
