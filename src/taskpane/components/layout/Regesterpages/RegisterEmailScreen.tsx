@@ -9,6 +9,7 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import SendIcon from '@mui/icons-material/Send'; // Icon for Send action
 import { Link, useNavigate } from 'react-router-dom';
 import { Get_Email_file } from '../../Services/Get_Email_file';
+import { toast, ToastContainer } from 'react-toastify';
 
 const RegisterEmailScreen = () => {
     const theme = useTheme();
@@ -33,8 +34,15 @@ const RegisterEmailScreen = () => {
 
     const handleSaveClick = async () => {
         setisLoading(true)
-        await Get_Email_file()
-        setisLoading(false)
+        try {
+            await Get_Email_file()
+            toast.success("Email saved to DMS successfully!");
+        } catch (error) {
+            console.error(error)
+            toast.error("Failed to save email. Please try again.");
+        } finally {
+            setisLoading(false)
+        }
     };
 
 
@@ -52,6 +60,7 @@ const RegisterEmailScreen = () => {
                 color: 'text.primary',
             }}
         >
+            <ToastContainer />
             {/* Back Button */}
             <IconButton
                 sx={{ position: 'absolute', top: 8, left: 8, color: theme.palette.text.secondary, zIndex: 1 }}
