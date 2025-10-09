@@ -1,89 +1,359 @@
-import { Button, IconButton, Input, Box, List, ListItem, ListItemButton, ListItemIcon, Checkbox, ListItemText } from '@mui/material';
-import AttachFileIcon from '@mui/icons-material/AttachFile';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SaveEmail_and_attachments } from '../../Services/SaveEmail_and_attachments';
 import { toast, ToastContainer } from 'react-toastify';
+=======
+>>>>>>> 2490e4843d16057d46af5fc94b95f10fd27383ec
 
-const RegesterEmialAndAttachments = () => {
-  // State for the email input field, will be populated by Office JS
-  const [emailInput, setEmailInput] = useState('');
-  const [mailAttachments, setMailAttachments] = useState([]);
+// import {
+//   Button,
+//   IconButton,
+//   Input,
+//   Box,
+//   List,
+//   ListItem,
+//   ListItemButton,
+//   ListItemIcon,
+//   Checkbox,
+//   ListItemText,
+//   CircularProgress,
+// } from "@mui/material";
+// import AttachFileIcon from "@mui/icons-material/AttachFile";
+// import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+// import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+// import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
+// import React, { useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { SaveEmail_and_attachments } from "../../Services/SaveEmail_and_attachments";
+// import { Get_Email_file } from "../../Services/Get_Email_file";
+
+// const RegisterEmailAndAttachments = () => {
+//   const [emailInput, setEmailInput] = useState("");
+//   const [mailAttachments, setMailAttachments] = useState<
+//     { id: string; name: string; isChecked: boolean }[]
+//   >([]);
+//   const [isLoading, setIsLoading] = useState(true);
+//   const [uploading, setUploading] = useState(false);
+//   const [error, setError] = useState<string | null>(null);
+
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const initializeOfficeAndGetData = async () => {
+//       try {
+//         if (
+//           typeof Office !== "undefined" &&
+//           Office.context?.mailbox?.item
+//         ) {
+//           const item = Office.context.mailbox.item;
+
+//           // Sender email
+//           const senderEmail = item.sender?.emailAddress || "Unknown Sender";
+//           setEmailInput(senderEmail);
+
+//           // Attachments
+//           const attachments = item.attachments || [];
+//           const formattedAttachments = attachments.map((att) => ({
+//             id: att.id,
+//             name: att.name,
+//             isChecked: false,
+//           }));
+//           setMailAttachments(formattedAttachments);
+//         } else {
+//           setError("Office context not detected. Please run inside Outlook.");
+//         }
+//       } catch (err) {
+//         console.error("Error loading Office data:", err);
+//         setError("Failed to load email data.");
+//       } finally {
+//         setIsLoading(false);
+//       }
+//     };
+
+//     initializeOfficeAndGetData();
+//   }, []);
+
+//   const handleAttachmentChange = (attachmentId: string) => {
+//     setMailAttachments((prev) =>
+//       prev.map((att) =>
+//         att.id === attachmentId ? { ...att, isChecked: !att.isChecked } : att
+//       )
+//     );
+//   };
+
+//   const handleSaveClick = async () => {
+//     try {
+//       setUploading(true);
+//       setError(null);
+
+//       if (!Office.context?.mailbox?.item) {
+//         setError("Not running inside Outlook.");
+//         setUploading(false);
+//         return;
+//       }
+
+//       // Get main email file (.eml)
+//       const mainEmailFile = await Get_Email_file();
+
+//       // Get selected attachments
+//       const selectedAttachments = mailAttachments.filter((a) => a.isChecked);
+
+//       // Convert selected attachments to File objects
+//       const attachmentFiles: File[] = [];
+
+//       for (const att of selectedAttachments) {
+//         const content = await new Promise<string>((resolve, reject) => {
+//           Office.context.mailbox.item.getAttachmentContentAsync(
+//             att.id,
+//             (result) => {
+//               if (result.status === Office.AsyncResultStatus.Succeeded) {
+//                 resolve(result.value.content);
+//               } else {
+//                 reject(result.error);
+//               }
+//             }
+//           );
+//         });
+
+//         // Convert base64 string to File
+//         const byteArray = Uint8Array.from(atob(content), (c) =>
+//           c.charCodeAt(0)
+//         );
+//         const blob = new Blob([byteArray], { type: "application/octet-stream" });
+//         const file = new File([blob], att.name);
+//         attachmentFiles.push(file);
+//       }
+
+//       console.log("Uploading:", {
+//         email: mainEmailFile.name,
+//         attachments: attachmentFiles.map((f) => f.name),
+//       });
+
+//       // Upload email + attachments
+//       await SaveEmail_and_attachments(
+//         mainEmailFile,
+//         attachmentFiles,
+//         "luis.barata",
+//         (result, err) => {
+//           if (err) {
+//             console.error("Upload failed:", err);
+//             setError("Upload failed. Check console for details.");
+//           } else {
+//             console.log("Upload successful:", result);
+//             alert("Email and attachments uploaded successfully!");
+//           }
+//         }
+//       );
+//     } catch (err) {
+//       console.error(err);
+//       setError("An error occurred while saving attachments.");
+//     } finally {
+//       setUploading(false);
+//     }
+//   };
+
+//   if (isLoading) {
+//     return (
+//       <Box textAlign="center" mt={5}>
+//         <CircularProgress />
+//         <p>Loading email data...</p>
+//       </Box>
+//     );
+//   }
+
+//   if (error) {
+//     return (
+//       <Box textAlign="center" mt={5} color="red">
+//         <p>{error}</p>
+//       </Box>
+//     );
+//   }
+
+//   return (
+//     <Box sx={{ p: 2, position: "relative" }}>
+//       {/* Back button */}
+//       <IconButton
+//         sx={{ position: "absolute", top: 8, left: 8 }}
+//         onClick={() => navigate("/main")}
+//       >
+//         <ArrowBackIcon />
+//       </IconButton>
+
+//       {/* Logo */}
+//       <Box
+//         component="img"
+//         src={require("../../../../../assets/logo-filled.png")}
+//         sx={{ width: 150, display: "block", mx: "auto", mb: 2 }}
+//       />
+
+//       {/* Email input */}
+//       <Input
+//         value={emailInput}
+//         readOnly
+//         fullWidth
+//         sx={{ mb: 3 }}
+//         placeholder="Sender email"
+//       />
+
+//       {/* Attachments list */}
+//       <List sx={{ width: "100%", bgcolor: "background.paper" }}>
+//         {mailAttachments.length > 0 ? (
+//           mailAttachments.map((att) => (
+//             <ListItem key={att.id} disablePadding>
+//               <ListItemButton onClick={() => handleAttachmentChange(att.id)}>
+//                 <ListItemIcon>
+//                   <Checkbox checked={att.isChecked} />
+//                 </ListItemIcon>
+//                 <ListItemText primary={att.name} />
+//                 <InsertDriveFileIcon sx={{ color: "skyblue" }} />
+//               </ListItemButton>
+//             </ListItem>
+//           ))
+//         ) : (
+//           <p>No attachments found.</p>
+//         )}
+//       </List>
+
+//       {/* Upload button */}
+//       <Button
+//         fullWidth
+//         variant="contained"
+//         color="secondary"
+//         startIcon={<AttachFileIcon />}
+//         endIcon={<ArrowForwardIcon />}
+//         onClick={handleSaveClick}
+//         disabled={uploading}
+//         sx={{
+//           mt: 3,
+//           backgroundColor: "#e56100",
+//           "&:hover": { backgroundColor: "#cc5100" },
+//         }}
+//       >
+//         {uploading ? "Uploading..." : "Register Attachments"}
+//       </Button>
+
+//       {/* Info */}
+//       <Box mt={3} fontSize={13} color="text.secondary">
+//         <p>This will copy the email and attachments to your GesDoc.</p>
+//         <p>Example filenames:</p>
+//         <code>your_email--date--time.pdf</code>
+//         <br />
+//         <code>your_email--date--time--att1</code>
+//         <br />
+//         <code>your_email--date--time--att2</code>
+//       </Box>
+//     </Box>
+//   );
+// };
+
+// export default RegisterEmailAndAttachments;
+
+
+
+
+
+
+
+
+
+
+
+
+import {
+  Button,
+  IconButton,
+  Input,
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  Checkbox,
+  ListItemText,
+  CircularProgress,
+  Snackbar,
+  Alert,
+} from "@mui/material";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { SaveEmail_and_attachments } from "../../Services/SaveEmail_and_attachments";
+import { Get_Email_file } from "../../Services/Get_Email_file";
+
+const RegisterEmailAndAttachments = () => {
+  const [emailInput, setEmailInput] = useState("");
+  const [mailAttachments, setMailAttachments] = useState<
+    { id: string; name: string; isChecked: boolean }[]
+  >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
-  // Hook for navigation bw different components
-  const navigate = useNavigate()
-  // --- Office JS Integration ---
+  // Snackbar state
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success" as "success" | "error" | "warning" | "info",
+  });
+
+  const navigate = useNavigate();
+
   useEffect(() => {
-    // This function will initialize Office and fetch data
     const initializeOfficeAndGetData = async () => {
       try {
-        if (typeof Office !== 'undefined' && Office.context && Office.context.mailbox && Office.context.mailbox.item) {
-          console.log("Office context detected, fetching email data...");
+        if (typeof Office !== "undefined" && Office.context?.mailbox?.item) {
+          const item = Office.context.mailbox.item;
 
-          // Get sender's email
-          const senderEmail = Office.context.mailbox.item.sender.emailAddress;
-          if (senderEmail) {
-            setEmailInput(senderEmail);
-          } else {
-            setEmailInput("No sender email found");
-          }
+          // Sender email
+          const senderEmail = item.sender?.emailAddress || "Unknown Sender";
+          setEmailInput(senderEmail);
 
-          // Get attachments
-          const attachments = Office.context.mailbox.item.attachments;
-          if (attachments && attachments.length > 0) {
-            // Map attachments to our state structure, initially all unchecked
-            const formattedAttachments = attachments.map(att => ({
-              id: att.id,
-              name: att.name,
-              isChecked: false, // Start all as unchecked
-            }));
-            setMailAttachments(formattedAttachments);
-          } else {
-            console.log("No attachments found for this email.");
-            setMailAttachments([]);
-          }
+          // Attachments
+          const attachments = item.attachments || [];
+          const formattedAttachments = attachments.map((att) => ({
+            id: att.id,
+            name: att.name,
+            isChecked: false,
+          }));
+          setMailAttachments(formattedAttachments);
         } else {
-          // Fallback for when not running in an Office Add-in environment
-          console.log("Office context not available. Using mock data.");
-          setEmailInput("mock_sender@example.com");
-          setMailAttachments([
-            { id: "mock_att1", name: "Mock Document.pdf", isChecked: false },
-            { id: "mock_att2", name: "Mock Image.jpg", isChecked: true }, // Pre-checked as per wireframe
-            { id: "mock_att3", name: "Mock Spreadsheet.xlsx", isChecked: false },
-            { id: "mock_att4", name: "Mock Presentation.pptx", isChecked: false },
-          ]);
+          showSnackbar("Office context not detected. Please run inside Outlook.", "error");
         }
       } catch (err) {
-        console.error("Error initializing Office or fetching data:", err);
-        setError("Failed to load email data. Make sure an email is selected.");
-        setEmailInput("Error fetching email");
-        setMailAttachments([]);
+        console.error("Error loading Office data:", err);
+        showSnackbar("Failed to load email data.", "error");
       } finally {
         setIsLoading(false);
       }
     };
 
-    // Call the function to fetch data
     initializeOfficeAndGetData();
-
-    // The empty dependency array ensures this effect runs only once after initial render
   }, []);
 
-  // Handler for attachment checkbox changes
-  const handleAttachmentChange = (attachmentId) => {
-    setMailAttachments(prevAttachments =>
-      prevAttachments.map(att =>
+  const showSnackbar = (
+    message: string,
+    severity: "success" | "error" | "warning" | "info"
+  ) => {
+    setSnackbar({ open: true, message, severity });
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbar((prev) => ({ ...prev, open: false }));
+  };
+
+  const handleAttachmentChange = (attachmentId: string) => {
+    setMailAttachments((prev) =>
+      prev.map((att) =>
         att.id === attachmentId ? { ...att, isChecked: !att.isChecked } : att
       )
     );
   };
 
+<<<<<<< HEAD
   // Handler for the main registration button click
   const handleRegisterClick = () => {
     console.log('Register Email and Attachments clicked!');
@@ -113,217 +383,172 @@ const RegesterEmialAndAttachments = () => {
       if (data) {
         toast.success("Files registered successfully")
         console.log('email/attachments data', data);
+=======
+  const handleSaveClick = async () => {
+    try {
+      setUploading(true);
+>>>>>>> 2490e4843d16057d46af5fc94b95f10fd27383ec
 
+      if (!Office.context?.mailbox?.item) {
+        showSnackbar("Not running inside Outlook.", "error");
+        setUploading(false);
+        return;
       }
 
+<<<<<<< HEAD
       if (err) {
         toast.error("Files registration failed.")
         console.log(err);
+=======
+      // Get main email file (.eml)
+      const mainEmailFile = await Get_Email_file();
+>>>>>>> 2490e4843d16057d46af5fc94b95f10fd27383ec
 
+      // Get selected attachments
+      const selectedAttachments = mailAttachments.filter((a) => a.isChecked);
+
+      if (selectedAttachments.length === 0) {
+        showSnackbar("Please select at least one attachment.", "warning");
+        setUploading(false);
+        return;
       }
-    })
-  }
 
+      // Convert selected attachments to File objects
+      const attachmentFiles: File[] = [];
 
-  const styles = {
-    container: {
-      fontFamily: 'Arial, sans-serif',
-      fontSize: '14px',
-      color: '#333',
-      //   border: '1px solid #bbb',
-      borderRadius: '5px',
-      //   width: '400px', // Approximate width to match the image
-      margin: '20px auto',
-      backgroundColor: '#fff',
-      boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
-      overflow: 'hidden',
-    },
-    // Browser header section
-    pageTitleBar: {
-      backgroundColor: '#eee',
-      borderBottom: '1px solid #ccc',
-      textAlign: 'center',
-      padding: '6px 0',
-      fontSize: '13px',
-      color: '#555',
-    },
-    browserNavbar: {
-      display: 'flex',
-      alignItems: 'center',
-      padding: '6px 10px',
-      backgroundColor: '#f1f1f1',
-      borderBottom: '1px solid #ddd',
-    },
-    navButtons: {
-      display: 'flex',
-      gap: '8px',
-      marginRight: '15px',
-    },
-    navIcon: {
-      fontSize: '18px',
-      cursor: 'pointer',
-      color: '#666',
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: '24px',
-      height: '24px',
-    },
-    addressBar: {
-      flexGrow: 1,
-      display: 'flex',
-      alignItems: 'center',
-      backgroundColor: '#e0e0e0',
-      borderRadius: '3px',
-      padding: '4px 8px',
-      border: '1px solid #bbb',
-      color: '#555',
-    },
-    addressInput: {
-      border: 'none',
-      outline: 'none',
-      backgroundColor: 'transparent',
-      flexGrow: 1,
-      padding: '0 5px',
-      fontSize: '13px',
-      color: '#333',
-      pointerEvents: 'none', // Make it non-interactive to simulate a wireframe
-    },
-    menuIcon: {
-      fontSize: '20px',
-      marginLeft: '15px',
-      cursor: 'pointer',
-      color: '#666',
-    },
-    // Main content area
-    contentArea: {
-      padding: '20px',
-    },
-    // Email input field
-    emailInputContainer: {
-      marginBottom: '25px',
-    },
-    emailInputField: {
-      //   width: '100%',
-      //   padding: '8px 10px',
-      // //   border: '1px solid #ccc',
-      //   borderRadius: '3px',
-      //   fontSize: '14px',
-      //   boxSizing: 'border-box',
-    },
-    // Attachments section
-    attachmentsSection: {
-      marginBottom: '35px',
-      textAlign: 'left',
-    },
-    attachmentLabel: {
-      display: "block",
-      marginBottom: "10px",
-      cursor: "pointer",
-      boxShadow: "0px 0px 3px 1px #00000030",
-      border: '2px red',
-      padding: "16px",
+      for (const att of selectedAttachments) {
+        const content = await new Promise<string>((resolve, reject) => {
+          Office.context.mailbox.item.getAttachmentContentAsync(
+            att.id,
+            (result) => {
+              if (result.status === Office.AsyncResultStatus.Succeeded) {
+                resolve(result.value.content);
+              } else {
+                reject(result.error);
+              }
+            }
+          );
+        });
 
-    },
-    attachmentCheckbox: {
-      marginRight: '10px',
-      transform: 'scale(1.1)',
-    },
-    // Action button
-    actionButtonContainer: {
-      marginBottom: '40px',
-      textAlign: 'center',
-    },
-    actionButton: {
-      backgroundColor: '#e0e0e0',
-      border: '1px solid #bbb',
-      borderRadius: '5px',
-      padding: '10px 25px',
-      fontSize: '14px',
-      cursor: 'pointer',
-      color: '#333',
-      outline: 'none',
-      boxShadow: '0 1px 2px rgba(0,0,0,0.1)',
-      fontWeight: 'normal',
-      display: 'inline-block',
-    },
-    // Description text
-    descriptionSection: {
-      fontSize: '13px',
-      lineHeight: '1.5',
-      color: '#555',
-      textAlign: 'left',
-    },
-    descriptionParagraph: {
-      marginBottom: '8px',
-    },
-    filenameExample: {
-      fontFamily: 'monospace',
-      backgroundColor: '#f9f9f9',
-      padding: '2px 4px',
-      borderRadius: '3px',
-      fontSize: '12px',
-      display: 'block',
-      marginLeft: '10px',
-      wordBreak: 'break-all',
-    },
-    statusMessage: {
-      textAlign: 'center',
-      marginBottom: '20px',
-      color: '#888',
+        // Convert base64 string to File
+        const byteArray = Uint8Array.from(atob(content), (c) => c.charCodeAt(0));
+        const blob = new Blob([byteArray], { type: "application/octet-stream" });
+        const file = new File([blob], att.name);
+        attachmentFiles.push(file);
+      }
+
+      console.log("Uploading:", {
+        email: mainEmailFile.name,
+        attachments: attachmentFiles.map((f) => f.name),
+      });
+
+      // Upload email + attachments
+      await SaveEmail_and_attachments(
+        mainEmailFile,
+        attachmentFiles,
+        "luis.barata",
+        (result, err) => {
+          if (err) {
+            console.error("Upload failed:", err);
+            showSnackbar("Upload failed. Check console for details.", "error");
+          } else {
+            console.log("Upload successful:", result);
+            showSnackbar("Email and attachments uploaded successfully!", "success");
+          }
+        }
+      );
+    } catch (err) {
+      console.error(err);
+      showSnackbar("An error occurred while saving attachments.", "error");
+    } finally {
+      setUploading(false);
     }
   };
 
   if (isLoading) {
     return (
-      <div style={styles.container}>
-        <div style={styles.contentArea}>
-          <div style={styles.statusMessage as React.CSSProperties}>Loading email data...</div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div style={styles.container}>
-        <div style={styles.contentArea}>
-          <div style={{ ...styles.statusMessage as React.CSSProperties, color: 'red' }}>Error: {error}</div>
-        </div>
-      </div>
+      <Box textAlign="center" mt={5}>
+        <CircularProgress />
+        <p>Loading email data...</p>
+      </Box>
     );
   }
 
   return (
-    <div style={styles.container}>
-      {/* Browser Page Title Bar */}
-
-
-      {/* Back Button */}
+    <Box sx={{ p: 2, position: "relative" }}>
+      {/* Back button */}
       <IconButton
-        sx={{ position: 'absolute', top: 8, left: 8, color: '#666', zIndex: 1 }}
-        onClick={() => {
-          navigate('/main')
-        }}
-        aria-label="back"
+        sx={{ position: "absolute", top: 8, left: 8 }}
+        onClick={() => navigate("/main")}
       >
         <ArrowBackIcon />
       </IconButton>
 
-      {/* Icon */}
-      <Box component="img" src={require('../../../../../assets/logo-filled.png')} sx={{ top: 10, width: 150, display: 'block', margin: 'auto' }}>
+      {/* Logo */}
+      <Box
+        component="img"
+        src={require("../../../../../assets/logo-filled.png")}
+        sx={{ width: 150, display: "block", mx: "auto", mb: 2 }}
+      />
 
+      {/* Email input */}
+      <Input
+        value={emailInput}
+        readOnly
+        fullWidth
+        sx={{ mb: 3 }}
+        placeholder="Sender email"
+      />
+
+      {/* Attachments list */}
+      <List sx={{ width: "100%", bgcolor: "background.paper" }}>
+        {mailAttachments.length > 0 ? (
+          mailAttachments.map((att) => (
+            <ListItem key={att.id} disablePadding>
+              <ListItemButton onClick={() => handleAttachmentChange(att.id)}>
+                <ListItemIcon>
+                  <Checkbox checked={att.isChecked} />
+                </ListItemIcon>
+                <ListItemText primary={att.name} />
+                <InsertDriveFileIcon sx={{ color: "skyblue" }} />
+              </ListItemButton>
+            </ListItem>
+          ))
+        ) : (
+          <p>No attachments found.</p>
+        )}
+      </List>
+
+      {/* Upload button */}
+      <Button
+        fullWidth
+        variant="contained"
+        color="secondary"
+        startIcon={<AttachFileIcon />}
+        endIcon={<ArrowForwardIcon />}
+        onClick={handleSaveClick}
+        disabled={uploading}
+        sx={{
+          mt: 3,
+          backgroundColor: "#e56100",
+          "&:hover": { backgroundColor: "#cc5100" },
+        }}
+      >
+        {uploading ? "Uploading..." : "Register Attachments"}
+      </Button>
+
+      {/* Info */}
+      <Box mt={3} fontSize={13} color="text.secondary">
+        <p>This will copy the email and attachments to your GesDoc.</p>
+        <p>Example filenames:</p>
+        <code>your_email--date--time.pdf</code>
+        <br />
+        <code>your_email--date--time--att1</code>
+        <br />
+        <code>your_email--date--time--att2</code>
       </Box>
-      {/* Main Content Area */}
-      <div style={styles.contentArea}>
-        {/* Email Input Field */}
-        <div style={styles.emailInputContainer}>
-          <Input
-            type="text"
-            placeholder="Your email (text)"
-            value={emailInput}
-            fullWidth
 
+<<<<<<< HEAD
             onChange={(e) => setEmailInput(e.target.value)}
             // style={styles.emailInputField as React.CSSProperties}
             readOnly // Make it read-only as it's pre-filled by the add-in
@@ -421,7 +646,25 @@ const RegesterEmialAndAttachments = () => {
         </div>
       </div>
     </div>
+=======
+      {/* Snackbar notifications */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={3000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity={snackbar.severity}
+          sx={{ width: "100%" }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
+    </Box>
+>>>>>>> 2490e4843d16057d46af5fc94b95f10fd27383ec
   );
 };
 
-export default RegesterEmialAndAttachments;
+export default RegisterEmailAndAttachments;
