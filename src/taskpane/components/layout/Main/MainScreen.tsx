@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, Button, Stack, useTheme } from '@mui/material';
+import { Box, Typography, Button, Stack, useTheme, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import LoaderApp from '../../Loader/Loader';
 
@@ -8,6 +8,7 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const MainScreen = () => {
   const navigate = useNavigate();
@@ -35,6 +36,16 @@ const MainScreen = () => {
         bgcolor: theme.palette.background.default,
       }}
     >
+      {/* Back Button */}
+      <IconButton
+        sx={{ position: 'absolute', top: 8, left: 8, color: theme.palette.text.secondary, zIndex: 1 }}
+        onClick={() => {
+          navigate('/')
+        }}
+        aria-label="back"
+      >
+        <ArrowBackIcon />
+      </IconButton>
       {/* Loader overlay when navigating */}
       {loading && <LoaderApp />}
 
