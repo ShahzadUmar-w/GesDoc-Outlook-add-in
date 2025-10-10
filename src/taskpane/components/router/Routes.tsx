@@ -22,7 +22,6 @@ function ProtectedRoute({ children }) {
 const RouterApp: React.FC = () => {
     const { username } = useUser();
 
-
     return (
         <>
             <Router>
@@ -34,9 +33,7 @@ const RouterApp: React.FC = () => {
                     <Route path="/RegisterEmailScreen" element={<RegisterEmailScreen />} />
                     <Route path="/RegesterEmialAndAttachments" element={<RegesterEmialAndAttachments />} />
                     <Route path="/invoice" element={<InvoiceFile />} />
-
                     <Route path="/setting" element={<Setting />} />
-
                 </Routes>
             </Router>
         </>
