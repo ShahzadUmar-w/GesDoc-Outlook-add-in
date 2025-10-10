@@ -3,7 +3,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from "react";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Getstart from "../layout/GetStart/Getstart";
 import MainScreen from "../layout/Main/MainScreen";
 import RegisterEmailScreen from "../layout/Regesterpages/RegisterEmailScreen";
@@ -12,29 +12,37 @@ import RegesterEmialAndAttachments from "../layout/Regesterpages/RegesterEmialAn
 import InvoiceFile from "../layout/Regesterpages/InvoiceFile";
 import UsernameModal from "../layout/Regesterpages/UsernameModal";
 
+function ProtectedRoute({ children }) {
+    const { username } = useUser();
+    if (!username) return <Navigate to="/settings" replace />;
+    return children;
+}
 
 const RouterApp: React.FC = () => {
+    const { username } = useUser();
+    // const [showModal, setShowModal] = useState(false);
 
-    const [showModal, setShowModal] = useState(false);
+    // useEffect(() => {
+    //     // Initialize Office.js
+    //     Office.onReady(() => {
+    //         console.log(showModal);
 
-    useEffect(() => {
-        // Initialize Office.js
-        Office.onReady(() => {
-            console.log(showModal);
+    //         console.log('Office is ready in router');
+    //         // Check localStorage for username
+    //         const username = localStorage.getItem('');
+    //         if (!username) {
+    //             setShowModal(true); // Show modal if no username
+    //         }
+    //     });
+    // }, []);
 
-            console.log('Office is ready in router');
-            // Check localStorage for username
-            const username = localStorage.getItem('');
-            if (!username) {
-                setShowModal(true); // Show modal if no username
-            }
-        });
-    }, []);
 
     return (
         <>
             <Router>
-                {showModal && <UsernameModal setShowModal={setShowModal} />}
+                {/* {showModal && <UsernameModal setShowModal={setShowModal} />} */}
+                {/* If no username, show modal */}
+                {!username && <UsernameModal setShowModal={undefined} />}
                 <Routes>
                     <Route path="/" element={<Getstart />} />
                     <Route path="/main" element={<MainScreen />} />
@@ -54,4 +62,8 @@ export default RouterApp;
 
 
 
+
+function useUser(): { username: any; } {
+    throw new Error("Function not implemented.");
+}
 
