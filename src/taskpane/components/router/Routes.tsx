@@ -11,6 +11,7 @@ import Setting from "../layout/Settings/Setting";
 import RegesterEmialAndAttachments from "../layout/Regesterpages/RegesterEmialAndAttachments";
 import InvoiceFile from "../layout/Regesterpages/InvoiceFile";
 import UsernameModal from "../layout/Regesterpages/UsernameModal";
+import { useUser } from "../../../context/UserContext";
 
 function ProtectedRoute({ children }) {
     const { username } = useUser();
@@ -63,7 +64,4 @@ export default RouterApp;
 
 
 
-function useUser(): { username: any; } {
-    throw new Error("Function not implemented.");
-}
 

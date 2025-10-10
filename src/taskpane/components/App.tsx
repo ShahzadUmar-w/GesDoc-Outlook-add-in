@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import RouterApp from './router/Routes'
-import { UserProvider } from "./context/UserContext.jsx";
+import { UserProvider } from "../../context/UserContext";
 
 const App = () => {
 
