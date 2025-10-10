@@ -21,27 +21,11 @@ function ProtectedRoute({ children }) {
 
 const RouterApp: React.FC = () => {
     const { username } = useUser();
-    // const [showModal, setShowModal] = useState(false);
-
-    // useEffect(() => {
-    //     // Initialize Office.js
-    //     Office.onReady(() => {
-    //         console.log(showModal);
-
-    //         console.log('Office is ready in router');
-    //         // Check localStorage for username
-    //         const username = localStorage.getItem('');
-    //         if (!username) {
-    //             setShowModal(true); // Show modal if no username
-    //         }
-    //     });
-    // }, []);
 
 
     return (
         <>
             <Router>
-                {/* {showModal && <UsernameModal setShowModal={setShowModal} />} */}
                 {/* If no username, show modal */}
                 {!username && <UsernameModal setShowModal={undefined} />}
                 <Routes>
