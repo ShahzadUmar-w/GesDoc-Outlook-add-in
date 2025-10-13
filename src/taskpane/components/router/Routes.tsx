@@ -13,20 +13,15 @@ import InvoiceFile from "../layout/Regesterpages/InvoiceFile";
 import UsernameModal from "../layout/Regesterpages/UsernameModal";
 import { useUser } from "../../../context/UserContext";
 
-function ProtectedRoute({ children }) {
-    const { username } = useUser();
-    if (!username) return <Navigate to="/settings" replace />;
-    return children;
-}
+ 
 
 const RouterApp: React.FC = () => {
-    const { username } = useUser();
+  
 
     return (
         <>
             <Router>
                 {/* If no username, show modal */}
-                {!username && <UsernameModal setShowModal={undefined} />}
                 <Routes>
                     <Route path="/" element={<Getstart />} />
                     <Route path="/main" element={<MainScreen />} />

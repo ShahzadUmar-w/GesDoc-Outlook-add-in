@@ -17,7 +17,7 @@ interface UploadResult {
  */
 export const SaveOnlyEmail = async (
   EMLFile: File,
-  username: string = "luis.barata",
+  username: string ,
   callback: (result: any | null, error: any | null) => void
 ) => {
   if (!EMLFile) {
@@ -29,9 +29,9 @@ export const SaveOnlyEmail = async (
   formData.append("file", EMLFile);
 
 
-
+const serverURL = localStorage.getItem('servername') // "https://gesdoc.beiranet.pt";
   try {
-    const response = await fetch("https://gesdoc.beiranet.pt/APIv3/upload_api_doc.php", {
+    const response = await fetch(`${serverURL}/APIv3/upload_api_doc.php`, {
       method: "POST",
       body: formData
     });
@@ -52,14 +52,13 @@ export const SaveOnlyEmail = async (
       } catch {
         result = {
           success: false,
-          message: "Server returned invalid JSON",
           rawResponse: responseText,
           status: response.status
         };
       }
     }
 
-    callback('Uploaded', null);
+    callback(responseText.message, null);
   } catch (error) {
     callback(null, error);
   }

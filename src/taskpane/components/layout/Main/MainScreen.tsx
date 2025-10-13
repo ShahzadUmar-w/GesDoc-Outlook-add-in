@@ -9,6 +9,7 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Settings } from '@mui/icons-material';
 
 const MainScreen = () => {
   const navigate = useNavigate();
@@ -45,6 +46,15 @@ const MainScreen = () => {
         aria-label="back"
       >
         <ArrowBackIcon />
+      </IconButton>
+      <IconButton
+        sx={{ position: 'absolute', top: 8, right: 8, color: theme.palette.text.secondary, zIndex: 1 }}
+        onClick={() => {
+          navigate('/setting')
+        }}
+        aria-label="back"
+      >
+        <Settings />
       </IconButton>
       {/* Loader overlay when navigating */}
       {loading && <LoaderApp />}

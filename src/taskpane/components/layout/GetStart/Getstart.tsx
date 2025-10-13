@@ -14,8 +14,15 @@ const Getstart = () => {
     // Placeholder for navigation handler
     const handleGetStarted = () => {
         setloading(true);
+     let username= localStorage.getItem('username');
+     if(!username){
+        navigate('/setting');
+        return;
+     }else{
+navigate('/main');
+     }
         // Replace '/main' with your specific starting route if different
-        navigate('/main');
+        
         // If navigation is asynchronous, you might hide loader in the target component or with more sophisticated routing.
     };
 

@@ -24,16 +24,17 @@ const modalStyle = {
 };
 
 function UsernameModal({ setShowModal }) {
-    // const [username, setUsername] = useState('Sajjad');
+    const [open, setopen] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async () => {
-        setShowModal(false)
+        setopen(false)
         navigate('/setting');
+        setShowModal(false)
     };
 
     return (
-        <Modal open={true} onClose={() => setShowModal(false)}>
+        <Modal open={open} onClose={() => setShowModal(false)}>
             <Box sx={modalStyle}>
                 <Typography variant="h6" component="h2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 4 }}>
                     <ErrorIcon style={{ color: 'orange' }} />

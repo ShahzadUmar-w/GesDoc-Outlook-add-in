@@ -20,21 +20,19 @@ const SettingScreen = () => {
     const [currentUsername, setCurrentUsername] = useState('');
     const [currentServername, setCurrentServername] = useState('');
     const [isSaving, setIsSaving] = useState(false);
-    const { setUsername } = useUser();
+
 
 
     const navigate = useNavigate()
 
     const handleSaveSettings = () => {
         if (currentServername.trim()) {
-            if (!currentUsername.trim()) return alert("Please enter a valid username.");
-            setUsername(currentUsername.trim());
-
+           
+localStorage.setItem('servername', currentServername.trim());
+localStorage.setItem('username', currentUsername.trim());
             toast.success("username and url registered!");
-            navigate('/')
-
+            navigate('/main')
         }
-
         if (!currentServername) {
             toast.warning("Add server url")
         }
@@ -130,6 +128,3 @@ const SettingScreen = () => {
 
 export default SettingScreen
 
-function useUser(): { setUsername: any; } {
-    throw new Error('Function not implemented.');
-}
