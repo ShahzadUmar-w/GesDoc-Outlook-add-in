@@ -14,15 +14,15 @@ const Getstart = () => {
     // Placeholder for navigation handler
     const handleGetStarted = () => {
         setloading(true);
-     let username= localStorage.getItem('username');
-     if(!username){
-        navigate('/setting');
-        return;
-     }else{
-navigate('/main');
-     }
+        let username = localStorage.getItem('username');
+        if (!username) {
+            navigate('/setting');
+            return;
+        } else {
+            navigate('/main');
+        }
         // Replace '/main' with your specific starting route if different
-        
+
         // If navigation is asynchronous, you might hide loader in the target component or with more sophisticated routing.
     };
 
@@ -54,7 +54,7 @@ navigate('/main');
                     // No need for display:flex, alignItems, gap here unless you add an icon directly to the title
                 }}
             >
-                Save Emails to GesDOC
+                Registar documentos no GesDOC
             </Typography>
 
             {/* Visual element with email icon, arrow, and logo */}
@@ -106,7 +106,7 @@ navigate('/main');
                 <Typography component="span" sx={{ fontWeight: 'bold', color: theme.palette.text.primary }}> {/* Bold part with theme primary color */}
                     GesDOC for Outlook
                 </Typography>
-                , lets you save emails directly within Outlook.
+                , permite registar documentos diretamente a partir do  Outlook.
             </Typography>
 
             {/* "Get Started" Button */}
@@ -119,11 +119,11 @@ navigate('/main');
                     minWidth: 260, // Slightly increased minWidth for a more prominent button
                     maxWidth: 320, // Keep a max width for consistency
                     width: '90%', // Make it full width if within a Stack/Box with maxWidth
-                   
+
                     fontWeight: theme.typography.button.fontWeight, // Use theme fontWeight for button text
                 }}
             >
-                Get Started with GesDOC
+                Iniciar PlugIn
             </Button>
         </Box>
     );
