@@ -1,5 +1,5 @@
 // src/context/UserContext.tsx
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
 interface UserContextType {
     username: string | null;
@@ -9,7 +9,7 @@ interface UserContextType {
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
-export const UserProvider = ({ children }) => {
+export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [username, setUsername] = useState(() => {
         return localStorage.getItem("username");
     });

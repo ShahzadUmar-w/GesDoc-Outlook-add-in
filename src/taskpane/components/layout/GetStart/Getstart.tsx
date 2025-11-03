@@ -58,7 +58,7 @@ const Getstart = () => {
                     // No need for display:flex, alignItems, gap here unless you add an icon directly to the title
                 }}
             >
-                Save Emails to GesDOC
+                Save Emails to GesDOC{text.saveEmailToGesDOC}
             </Typography>
 
             {/* Visual element with email icon, arrow, and logo */}
