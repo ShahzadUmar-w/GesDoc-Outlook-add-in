@@ -112,7 +112,7 @@ const InvoiceFile = () => {
         return;
       }
 
-      const username = localStorage.getItem("username") 
+      const username = localStorage.getItem("username")
       toast.info("Uploading invoice to GesDoc...");
 
       const response = await uploadInvoice(file, username);
@@ -155,7 +155,7 @@ const InvoiceFile = () => {
       />
 
       <Typography variant="h6" align="center" gutterBottom>
-        Register Invoice
+        Registar Fatura
       </Typography>
 
       {/* Sender */}
@@ -163,7 +163,7 @@ const InvoiceFile = () => {
 
       {/* Attachment dropdown */}
       <FormControl fullWidth sx={{ mb: 3 }}>
-        <InputLabel>Invoice Attachment</InputLabel>
+        <InputLabel>Anexo da fatura</InputLabel>
         <Select
           value={selectedAttachment ? selectedAttachment.id : ""}
           label="Invoice Attachment"
@@ -192,16 +192,15 @@ const InvoiceFile = () => {
         disabled={uploading}
         sx={{ py: 1.5 }}
       >
-        {uploading ? "Uploading..." : "Register Fatura"}
+        {uploading ? "Uploading..." : "Registar Fatura"}
       </Button>
 
       {/* Info */}
       <Box mt={4} color="text.secondary" fontSize={13}>
-        <Typography variant="body2">This will copy the selected invoice file to GesDoc.</Typography>
+        <Typography variant="body2">Isto irá copiar o ficheiro da fatura selecionado para o GesDoc.</Typography>
         <Typography variant="body2" mt={1}>
           Example filenames:
         </Typography>
-        <code>your_email--date--time.pdf</code>
       </Box>
 
       <ToastContainer position="bottom-center" />
