@@ -523,7 +523,7 @@ const RegisterEmailAndAttachments = () => {
   const handleUpload = async () => {
     try {
       setUploading(true);
-      toast.info("Preparing email for upload...");
+      toast.info("A preparar o e-mail para carregamento...");
 
       const mainEmailFile = await Get_Email_file();
       if (!mainEmailFile) {
@@ -541,7 +541,7 @@ const RegisterEmailAndAttachments = () => {
         toast.info("Uploading email without attachments...");
       }
 
-      const username = localStorage.getItem("username") 
+      const username = localStorage.getItem("username")
 
       await SaveEmail_and_attachments(mainEmailFile, attachmentFiles, username, (result, err) => {
         setUploading(false);

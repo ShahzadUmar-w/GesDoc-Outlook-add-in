@@ -234,7 +234,7 @@ const RegisterEmailScreen = () => {
         return;
       }
 
-      toast.info('Uploading email to server...');
+      toast.info('Carregando e-mail para o servidor...');
 
       SaveOnlyEmail(mainEmailFile, username, (result, error) => {
         setIsLoading(false);
