@@ -103,7 +103,7 @@ const InvoiceFile = () => {
 
     try {
       setUploading(true);
-      toast.info("Fetching invoice file...");
+      toast.info("Processando ficheiro da fatura...");
 
       const file = await getAttachmentFile(selectedAttachment);
       if (!file) {
@@ -113,12 +113,12 @@ const InvoiceFile = () => {
       }
 
       const username = localStorage.getItem("username")
-      toast.info("Uploading invoice to GesDoc...");
+      toast.info("A carregar fatura para o GesDoc...");
 
       const response = await uploadInvoice(file, username);
 
       if (response?.ok) {
-        toast.success("Invoice uploaded successfully!");
+        toast.success("Fatura carregada com sucesso!");
         console.log("Upload response:", response);
       } else {
         toast.error(`${response?.error}:Check server url and usename and try again.`);
