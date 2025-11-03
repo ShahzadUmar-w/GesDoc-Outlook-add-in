@@ -16,7 +16,7 @@ export async function SaveEmail_and_attachments(
 
     const API_URL = localStorage.getItem("servername")
 
-    const response = await fetch(API_URL, {
+    const response = await fetch(`${API_URL}/APIv3/upload_api_doc.php`, {
       method: "POST",
       body: formData,
     });
