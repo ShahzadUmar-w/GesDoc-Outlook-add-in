@@ -297,7 +297,7 @@ const RegisterEmailScreen = () => {
 
       {/* Title */}
       <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
-        Register Email
+        Registar Email
       </Typography>
 
       {/* Description */}
@@ -306,8 +306,7 @@ const RegisterEmailScreen = () => {
         color="text.secondary"
         sx={{ mb: 3, maxWidth: 320 }}
       >
-        Review the email details and save this message to your DMS.
-      </Typography>
+        Reveja os detalhes do e-mail e guarde esta mensagem no GesDOC.      </Typography>
 
       {/* Email Details */}
       <Stack
@@ -316,18 +315,18 @@ const RegisterEmailScreen = () => {
           mb: 3,
           width: '100%',
           p: 2,
-       
+
         }}
       >
         <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
-          Subject:{' '}
+          Assunto:{' '}
           <Typography component="span" color="text.secondary">
             {emailSubject}
           </Typography>
         </Typography>
 
         <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
-          From:{' '}
+          De:{' '}
           <Typography component="span" color="text.secondary">
             {emailSender}
           </Typography>
@@ -337,7 +336,7 @@ const RegisterEmailScreen = () => {
       {/* Comment Box */}
       <TextField
         id="comment-input"
-        label="Add Comment / Description"
+        label="Adicionar comentário / Descrição"
         multiline
         rows={4}
         fullWidth
@@ -370,7 +369,7 @@ const RegisterEmailScreen = () => {
         fullWidth
         sx={{ maxWidth: 380, py: 1.5 }}
       >
-        {isLoading ? 'Saving...' : 'Save Email to GetDoc'}
+        {isLoading ? ' Salvando...' : 'GUARDAR EMAIL NO GESDOC'}
       </Button>
 
       {!hasSettings && (
