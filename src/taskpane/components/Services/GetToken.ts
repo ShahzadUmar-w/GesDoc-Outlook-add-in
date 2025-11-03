@@ -17,7 +17,7 @@ Office.onReady(async (info) => {
 export async function Login_Function() {
     // Specify minimum scopes needed for the access token.
     const tokenRequest = {
-        scopes: ["Files.Read", "User.Read", "openid", "profile"],
+        scopes: ["Files.Read", "User.Read", "openid", "profile","Mail.Read" ],
     };
     let accessToken = null;
 
