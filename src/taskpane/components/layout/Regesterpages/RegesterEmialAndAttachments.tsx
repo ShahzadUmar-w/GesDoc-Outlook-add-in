@@ -550,7 +550,7 @@ const RegisterEmailAndAttachments = () => {
           toast.error("failed. Please check server url and usename and try again.");
         } else {
           console.log("Upload result:", result);
-          toast.success("Email and attachments uploaded successfully!");
+          toast.success("E-mail e anexos carregados com sucesso!");
         }
       });
     } catch (err) {

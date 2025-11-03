@@ -222,7 +222,7 @@ const RegisterEmailScreen = () => {
     }
 
     setIsLoading(true);
-    toast.info('Preparing email for upload...');
+    toast.info('A preparar o e-mail para carregamento...');
 
     try {
       const mainEmailFile = await Get_Email_file();
