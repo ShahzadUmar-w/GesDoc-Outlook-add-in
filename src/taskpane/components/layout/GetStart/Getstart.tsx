@@ -14,15 +14,15 @@ const Getstart = () => {
     // Placeholder for navigation handler
     const handleGetStarted = () => {
         setloading(true);
-     let username= localStorage.getItem('username');
-     if(!username){
-        navigate('/setting');
-        return;
-     }else{
-navigate('/main');
-     }
+        let username = localStorage.getItem('username');
+        if (!username) {
+            navigate('/setting');
+            return;
+        } else {
+            navigate('/main');
+        }
         // Replace '/main' with your specific starting route if different
-        
+
         // If navigation is asynchronous, you might hide loader in the target component or with more sophisticated routing.
     };
 
@@ -119,7 +119,7 @@ navigate('/main');
                     minWidth: 260, // Slightly increased minWidth for a more prominent button
                     maxWidth: 320, // Keep a max width for consistency
                     width: '90%', // Make it full width if within a Stack/Box with maxWidth
-                   
+
                     fontWeight: theme.typography.button.fontWeight, // Use theme fontWeight for button text
                 }}
             >
