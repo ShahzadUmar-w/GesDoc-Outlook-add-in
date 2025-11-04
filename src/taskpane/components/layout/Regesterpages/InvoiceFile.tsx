@@ -59,7 +59,7 @@ const InvoiceFile = () => {
     initialize();
   }, []);
 
-  // --- Get file content for selected invoice attachment
+  // --- Get file content for selected Anexo da fatura
   const getAttachmentFile = async (attachment: any): Promise<File | null> => {
     return new Promise((resolve, reject) => {
       Office.context.mailbox.item.getAttachmentContentAsync(attachment.id, async (result) => {
@@ -103,7 +103,7 @@ const InvoiceFile = () => {
 
     try {
       setUploading(true);
-      toast.info("Fetching invoice file...");
+      toast.info("Processando ficheiro da fatura...");
 
       const file = await getAttachmentFile(selectedAttachment);
       if (!file) {
@@ -113,12 +113,12 @@ const InvoiceFile = () => {
       }
 
       const username = localStorage.getItem("username") 
-      toast.info("Uploading invoice to GesDoc...");
+      toast.info("A carregar fatura para o GesDoc...");
 
       const response = await uploadInvoice(file, username);
 
       if (response?.ok) {
-        toast.success("Invoice uploaded successfully!");
+        toast.success("Fatura carregada com sucesso!");
         console.log("Upload response:", response);
       } else {
         toast.error(`${response?.error}:Check server url and usename and try again.`);
@@ -155,7 +155,7 @@ const InvoiceFile = () => {
       />
 
       <Typography variant="h6" align="center" gutterBottom>
-        Register Invoice
+        Registar Fatura
       </Typography>
 
       {/* Sender */}
@@ -163,10 +163,10 @@ const InvoiceFile = () => {
 
       {/* Attachment dropdown */}
       <FormControl fullWidth sx={{ mb: 3 }}>
-        <InputLabel>Invoice Attachment</InputLabel>
+        <InputLabel>Anexo da fatura</InputLabel>
         <Select
           value={selectedAttachment ? selectedAttachment.id : ""}
-          label="Invoice Attachment"
+          label="Anexo da fatura"
           onChange={(e) => {
             const att = mailAttachments.find((a) => a.id === e.target.value);
             setSelectedAttachment(att || null);
@@ -192,16 +192,16 @@ const InvoiceFile = () => {
         disabled={uploading}
         sx={{ py: 1.5 }}
       >
-        {uploading ? "Uploading..." : "Register Fatura"}
+        {uploading ? "Uploading..." : "REGISTAR FATURA"}
       </Button>
 
       {/* Info */}
       <Box mt={4} color="text.secondary" fontSize={13}>
-        <Typography variant="body2">This will copy the selected invoice file to GesDoc.</Typography>
-        <Typography variant="body2" mt={1}>
+        <Typography variant="body2">Isto irá copiar o ficheiro da fatura selecionado para o GesDoc.</Typography>
+        {/* <Typography variant="body2" mt={1}>
           Example filenames:
         </Typography>
-        <code>your_email--date--time.pdf</code>
+        <code>your_email--date--time.pdf</code> */}
       </Box>
 
       <ToastContainer position="bottom-center" />

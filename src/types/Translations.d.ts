@@ -12,7 +12,7 @@ export interface Translations {
     whatToDo: string;
     registerEmail: string;
     reviewEmailDetails: string;
-    subject: string;
+    Assunto:  string;
     from: string;
     addComment: string;
     saveEmailToGesDOC: string;

@@ -54,18 +54,18 @@ const SettingScreen = () => {
 
             {/* Title */}
             <Typography variant="h6" gutterBottom sx={{ mb: 2, fontWeight: theme.typography.h6.fontWeight }}>
-                Configure Add-in Settings
+                Definir configurações do suplemento
             </Typography>
 
             {/* Description */}
             <Typography variant="body1" color="text.secondary" sx={{ mb: 4, maxWidth: 300 }}>
-                Set up your DMS username and server URL.
-            </Typography>
+                Configure o seu nome de utilizador GesDOC e o URL do servidor.
+            </Typography
 
             <Stack spacing={3} sx={{ width: '100%', maxWidth: 380, mb: 4 }}>
                 <TextField
                     id="username-setting"
-                    label="DMS Username"
+                    label="Nome de utilizador GesDOC"
                     type="text"
                     fullWidth
                     variant="outlined"
@@ -77,7 +77,7 @@ const SettingScreen = () => {
                 />
                 <TextField
                     id="servername-setting"
-                    label="DMS Server URL (e.g., http://yourdms.com)"
+                    label="Endereço do Servidor GesDOC (ex., http://gesdoc:83)"
                     type="url" // Using type="url" for server name might give mobile keyboards a suitable layout
                     fullWidth
                     variant="outlined"

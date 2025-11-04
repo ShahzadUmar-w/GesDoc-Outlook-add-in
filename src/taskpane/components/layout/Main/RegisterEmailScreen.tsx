@@ -75,13 +75,13 @@ navigate('/main')
             {/* Email Details Display */}
             <Stack spacing={1} sx={{ mb: 3, width: '100%', maxWidth: 380, textAlign: 'left', p: 1, bgcolor: theme.palette.background.paper, borderRadius: 1 }}>
                 <Typography variant="body2" sx={{ fontWeight: 'bold', color: theme.palette.text.primary }}>
-                    Subject:
+                    Assunto: 
                     <Typography component="span" variant="body2" color="text.secondary" sx={{ ml: 1, fontWeight: 'normal' }}>
                         {emailSubject || 'No Subject'}
                     </Typography>
                 </Typography>
                 <Typography variant="body2" sx={{ fontWeight: 'bold', color: theme.palette.text.primary }}>
-                    From:
+                    De:
                     <Typography component="span" variant="body2" color="text.secondary" sx={{ ml: 1, fontWeight: 'normal' }}>
                         {emailSender || 'Unknown Sender'}
                     </Typography>
@@ -92,7 +92,7 @@ navigate('/main')
             {/* Comment/Description Text Field */}
             <TextField
                 id="comment-input"
-                label="Add Comment / Description"
+                label="Adicionar comentário / Descrição"
                 multiline
                 rows={4}
                 fullWidth

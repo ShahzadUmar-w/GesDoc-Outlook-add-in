@@ -54,7 +54,7 @@ navigate('/main');
                     // No need for display:flex, alignItems, gap here unless you add an icon directly to the title
                 }}
             >
-                Save Emails to GesDOC
+               Registar documentos no GesDOC
             </Typography>
 
             {/* Visual element with email icon, arrow, and logo */}

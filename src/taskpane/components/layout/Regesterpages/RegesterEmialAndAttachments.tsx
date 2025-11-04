@@ -523,7 +523,7 @@ const RegisterEmailAndAttachments = () => {
   const handleUpload = async () => {
     try {
       setUploading(true);
-      toast.info("Preparing email for upload...");
+      toast.info("A preparar o e-mail para carregamento...");
 
       const mainEmailFile = await Get_Email_file();
       if (!mainEmailFile) {
@@ -550,7 +550,7 @@ const RegisterEmailAndAttachments = () => {
           toast.error("failed. Please check server url and usename and try again.");
         } else {
           console.log("Upload result:", result);
-          toast.success("Email and attachments uploaded successfully!");
+          toast.success("E-mail e anexos carregados com sucesso!");
         }
       });
     } catch (err) {
@@ -591,10 +591,10 @@ const RegisterEmailAndAttachments = () => {
 
       {/* Title */}
       <Typography variant="h6" fontWeight="600" mb={1}>
-        Register Email & Attachments
+        Registar Email & Anexos
       </Typography>
       <Typography variant="body2" color="text.secondary" mb={3}>
-        Select which attachments to upload along with your email.
+        Selecione os anexos a carregar juntamente com o seu e-mail.
       </Typography>
 
       {/* Sender Info */}
@@ -647,19 +647,19 @@ const RegisterEmailAndAttachments = () => {
         onClick={handleUpload}
         sx={{ py: 1.5, maxWidth: 400 }}
       >
-        {uploading ? "Uploading..." : "Save Email to GesDoc"}
+        {uploading ? "Uploading..." : "GUARDAR EMAIL NO GESDOC"}
       </Button>
 
       {/* Info */}
-      <Box mt={4} color="text.secondary" fontSize={13}>
-        <Typography variant="body2">This will copy your email and attachments to GesDoc.</Typography>
+      {/* <Box mt={4} color="text.secondary" fontSize={13}>
+        <Typography variant="body2">Isto irá copiar o seu e-mail e anexos para o GesDoc.</Typography>
         <Typography variant="body2" mt={1}>
           Example filenames:
         </Typography>
         <code>your_email--date--time.eml</code>
         <br />
         <code>your_email--date--time--att1.pdf</code>
-      </Box>
+      </Box> */}
 
       <ToastContainer position="bottom-center" />
     </Box>

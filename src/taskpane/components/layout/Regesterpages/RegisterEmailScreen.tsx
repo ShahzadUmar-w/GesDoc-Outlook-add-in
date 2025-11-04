@@ -94,7 +94,7 @@
 //             {/* Email Details Display */}
 //             <Stack spacing={1} sx={{ mb: 3, width: '100%', maxWidth: 380, textAlign: 'left', p: 1, bgcolor: theme.palette.background.paper, borderRadius: 1 }}>
 //                 <Typography variant="body2" sx={{ fontWeight: 'bold', color: theme.palette.text.primary }}>
-//                     Subject:
+//                     Assunto: 
 //                     <Typography component="span" variant="body2" color="text.secondary" sx={{ ml: 1, fontWeight: 'normal' }}>
 //                         {emailSubject || 'No Subject'}
 //                     </Typography>
@@ -222,7 +222,7 @@ const RegisterEmailScreen = () => {
     }
 
     setIsLoading(true);
-    toast.info('Preparing email for upload...');
+    toast.info('A preparar o e-mail para carregamento...');
 
     try {
       const mainEmailFile = await Get_Email_file();
@@ -234,7 +234,7 @@ const RegisterEmailScreen = () => {
         return;
       }
 
-      toast.info('Uploading email to server...');
+      toast.info('Carregando e-mail para o servidor...');
 
       SaveOnlyEmail(mainEmailFile, username, (result, error) => {
         setIsLoading(false);
@@ -306,7 +306,7 @@ const RegisterEmailScreen = () => {
         color="text.secondary"
         sx={{ mb: 3, maxWidth: 320 }}
       >
-        Review the email details and save this message to your DMS.
+        Reveja os detalhes do e-mail e guarde esta mensagem no GesDOC.
       </Typography>
 
       {/* Email Details */}
@@ -320,7 +320,7 @@ const RegisterEmailScreen = () => {
         }}
       >
         <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
-          Subject:{' '}
+          Assunto: {' '}
           <Typography component="span" color="text.secondary">
             {emailSubject}
           </Typography>
@@ -337,7 +337,7 @@ const RegisterEmailScreen = () => {
       {/* Comment Box */}
       <TextField
         id="comment-input"
-        label="Add Comment / Description"
+        label="Adicionar comentário / Descrição"
         multiline
         rows={4}
         fullWidth

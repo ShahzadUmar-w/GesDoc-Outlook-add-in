@@ -47,7 +47,7 @@ const Getstart = () => {
                     // No need for display:flex, alignItems, gap here unless you add an icon directly to the title
                 }}
             >
-                Save Emails to GesDOC
+             Registar documentos no GesDOC
             </Typography>
 
             {/* Visual element with email icon, arrow, and logo */}
@@ -99,7 +99,7 @@ const Getstart = () => {
                 <Typography component="span" sx={{ fontWeight: 'bold', color: theme.palette.text.primary }}> {/* Bold part with theme primary color */}
                     GesDOC for Outlook
                 </Typography>
-                , lets you save emails directly within Outlook.
+                ,permite registar documentos diretamente a partir do  Outlook.
             </Typography>
 
             {/* "Get Started" Button */}
@@ -116,7 +116,7 @@ const Getstart = () => {
                     fontWeight: theme.typography.button.fontWeight, // Use theme fontWeight for button text
                 }}
             >
-                Get Started with GesDOC
+                Iniciar PlugIn
             </Button>
         </Box>
     );
