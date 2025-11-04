@@ -93,7 +93,7 @@ const MainScreen = () => {
           color: theme.palette.text.primary,
         }}
       >
-      O que quer fazer?
+      O que quer fazer ?
       </Typography>
 
       {/* Button group */}
