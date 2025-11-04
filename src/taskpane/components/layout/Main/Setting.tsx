@@ -60,7 +60,7 @@ const SettingScreen = () => {
             {/* Description */}
             <Typography variant="body1" color="text.secondary" sx={{ mb: 4, maxWidth: 300 }}>
                 Configure o seu nome de utilizador GesDOC e o URL do servidor.
-            </Typography
+            </Typography>
 
             <Stack spacing={3} sx={{ width: '100%', maxWidth: 380, mb: 4 }}>
                 <TextField
