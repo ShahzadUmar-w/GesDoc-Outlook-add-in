@@ -5,6 +5,10 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useNavigate } from 'react-router-dom';
 import LoaderApp from '../../Loader/Loader';
+import pt from "../../utils/textResources.json";
+import type { Translations } from '../../../../types/Translations';
+
+const text = pt as Translations;
 
 const Getstart = () => {
     const navigate = useNavigate();
@@ -54,7 +58,10 @@ const Getstart = () => {
                     // No need for display:flex, alignItems, gap here unless you add an icon directly to the title
                 }}
             >
+
                 Registar documentos no GesDOC
+                Save Emails to GesDOC{text.saveEmailToGesDOC}
+
             </Typography>
 
             {/* Visual element with email icon, arrow, and logo */}
