@@ -23,7 +23,7 @@ const modalStyle = {
     gap: '10px'  // space between elements
 };
 
-function UsernameModal({ setShowModal }: { setShowModal: (visible: boolean) => void }) {
+function UsernameModal({ setShowModal }) {
     const [open, setopen] = useState(false);
     const navigate = useNavigate();
 

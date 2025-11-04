@@ -5,10 +5,6 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useNavigate } from 'react-router-dom';
 import LoaderApp from '../../Loader/Loader';
-import pt from "../../utils/textResources.json";
-import type { Translations } from '../../../../types/Translations';
-
-const text = pt as Translations;
 
 const Getstart = () => {
     const navigate = useNavigate();
@@ -18,15 +14,15 @@ const Getstart = () => {
     // Placeholder for navigation handler
     const handleGetStarted = () => {
         setloading(true);
-        let username = localStorage.getItem('username');
-        if (!username) {
-            navigate('/setting');
-            return;
-        } else {
-            navigate('/main');
-        }
+     let username= localStorage.getItem('username');
+     if(!username){
+        navigate('/setting');
+        return;
+     }else{
+navigate('/main');
+     }
         // Replace '/main' with your specific starting route if different
-
+        
         // If navigation is asynchronous, you might hide loader in the target component or with more sophisticated routing.
     };
 
@@ -58,7 +54,7 @@ const Getstart = () => {
                     // No need for display:flex, alignItems, gap here unless you add an icon directly to the title
                 }}
             >
-                Save Emails to GesDOC{text.saveEmailToGesDOC}
+                Save Emails to GesDOC
             </Typography>
 
             {/* Visual element with email icon, arrow, and logo */}
@@ -123,7 +119,7 @@ const Getstart = () => {
                     minWidth: 260, // Slightly increased minWidth for a more prominent button
                     maxWidth: 320, // Keep a max width for consistency
                     width: '90%', // Make it full width if within a Stack/Box with maxWidth
-
+                   
                     fontWeight: theme.typography.button.fontWeight, // Use theme fontWeight for button text
                 }}
             >

@@ -1,8 +1,5 @@
 {
   "compilerOptions": {
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
     "allowUnusedLabels": false,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
@@ -31,7 +28,7 @@
   ],
   "compileOnSave": false,
   "buildOnSave": false,
-  "ts-node": {
-    "files": true
+  "ts-node": { 
+    "files": true 
   }
 }
