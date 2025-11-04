@@ -327,7 +327,7 @@ const RegisterEmailScreen = () => {
         </Typography>
 
         <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
-          From:{' '}
+          De:{' '}
           <Typography component="span" color="text.secondary">
             {emailSender}
           </Typography>
